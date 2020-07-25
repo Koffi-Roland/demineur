@@ -8,20 +8,22 @@ class Grille
 {
 
 private:
-    int longueur;
-    int largeur;
-    std::vector<std::vector<Case>> cases;
+    size_t ligne;
+    size_t colonne;
+    std::vector<std::vector<Case*>> cases;
     static Grille* instance;
     /*Constructeur privé pour éviter l'instanciation*/
     Grille();
-    Grille(int,int);
-    Grille(int,int,std::vector<std::vector<Case>>);
+    Grille(size_t,size_t);
 
 public:
    ~Grille(void);
     static Grille* getInstance();
-    std::vector<std::vector<Case>> getCases();
-
+    Case* getCase(size_t,size_t);
+    std::vector<std::vector<Case*>> getCases();
+    bool existe(size_t, size_t);
+    size_t getLigne();
+    size_t getColonne();
 
 };
 

@@ -1,20 +1,33 @@
 #ifndef CASE_H
 #define CASE_H
+#include <iostream>
+#include "etat.h"
+#include <vector>
 
+class Grille;
 
 class Case
 {
 private:
-    int x;
-    int y;
+    size_t x;
+    size_t y;
+    bool minee = false;
+    Grille *_grille;
+    Etat *_etat;
 public:
     Case();
-    Case(int,int);
+    Case(size_t, size_t, Etat *);
     ~Case(void);
-    int getVoisines();
-    int getNombreMine();
+    std::vector<Case*> getVoisines();
+    int getNombreMines();
+    void setMinee(bool);
+    bool estMinee();
+    void passerAlEtat(Etat*);
     void devoiler();
     void marquer();
+    Grille* getGrille(){
+        return _grille;
+    }
 };
 
 #endif // CASE_H

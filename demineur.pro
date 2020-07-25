@@ -19,12 +19,20 @@ SOURCES += \
     case.cpp \
     grille.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    etat.cpp \
+    nondevoilee.cpp \
+    marquee.cpp \
+    devoilee.cpp
 
 HEADERS += \
     case.h \
     grille.h \
-    mainwindow.h
+    mainwindow.h \
+    etat.h \
+    nondevoilee.h \
+    marquee.h \
+    devoilee.h
 
 FORMS += \
     mainwindow.ui
