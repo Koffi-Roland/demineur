@@ -24,7 +24,7 @@ public:
     bool existe(size_t, size_t);
     size_t getLigne();
     size_t getColonne();
-
+    void setMines(int);
 };
 
 #endif // GRILLE_H

@@ -16,11 +16,11 @@ private:
     Etat *_etat;
 public:
     Case();
-    Case(size_t, size_t, Etat *);
+    Case(size_t, size_t, Etat *, Grille *);
     ~Case(void);
     std::vector<Case*> getVoisines();
     int getNombreMines();
-    void setMinee(bool);
+    void setMinee();
     bool estMinee();
     void passerAlEtat(Etat*);
     void devoiler();

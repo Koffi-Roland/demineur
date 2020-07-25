@@ -3,6 +3,8 @@
 #include "nondevoilee.h"
 /*========== Application de design pattern Singleton=========*/
 
+Grille* Grille::instance = nullptr;
+
 Grille::Grille()
 {
 
@@ -14,14 +16,13 @@ Grille::Grille(size_t _ligne, size_t _colonne)
     for (size_t i = 0; i < _ligne; ++i) {
         std::vector<Case *> ligne;
         for (size_t j = 0; j < _colonne; ++j) {
-            ligne.push_back(new Case(i, j, new NonDevoilee()));
+            Case *_case = new Case(i, j, new NonDevoilee(), this);
+            ligne.push_back(_case);
         }
         cases.push_back(ligne);
     }
 }
 Grille::~Grille(){}
-
-Grille* Grille::instance = nullptr;
 
 Grille* Grille::getInstance()
 {
@@ -51,6 +52,14 @@ size_t Grille::getColonne(){
 }
 
 bool Grille::existe(size_t i, size_t j) {
-    return  i < ligne && 0 < i && j < colonne && 0 < j ;
+    return  0 <= i && i < ligne && 0 <= j && j < colonne  ;
+}
+
+void Grille::setMines(int n) {
+    for (size_t i = 0; i < ligne; ++i) {
+        for (size_t j = 0; j < colonne; ++j) {
+            getCase(i,j)->setMinee();
+        }
+    }
 }
 

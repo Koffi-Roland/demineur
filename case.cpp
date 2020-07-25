@@ -3,11 +3,12 @@
 
 Case::Case(){}
 
-Case::Case(size_t _x, size_t _y, Etat *_etat_initial)
+Case::Case(size_t _x, size_t _y, Etat *_etat_initial, Grille *grille)
 {
     x = _x;
     y = _y;
     this->passerAlEtat(_etat_initial);
+    this->_grille = grille;
 }
 void Case::devoiler(){
     _etat->devoiler();
@@ -17,8 +18,8 @@ void Case::marquer(){
     _etat->marquer();
 }
 
-void Case::setMinee(bool _minee){
-    minee =  _minee;
+void Case::setMinee(){
+    minee = true;
 }
 
 bool Case::estMinee(){
@@ -27,9 +28,8 @@ bool Case::estMinee(){
 
 std::vector<Case*> Case::getVoisines(){
     std::vector<Case*> voisines;
-
-    for (size_t i = x-1; i < x+1; ++i) {
-        for (size_t j = y-1; j < y+1; ++j) {
+    for (size_t i = x; i < x+1; i++) {
+        for (size_t j = y; j < y+1; j++) {
             if (getGrille()->existe(i, j) ){
                 voisines.push_back(getGrille()->getCase(i,j));
             }
@@ -44,12 +44,13 @@ int Case::getNombreMines(){
     for (Case * voisine:voisines) {
         n +=  (voisine->estMinee()) ? 1 : 0;
     }
-    return n;
+   //return n;
+   return  (int) voisines.size();
 }
 
 void Case::passerAlEtat(Etat *nouvel_etat){
-    if (_etat != nullptr)
-          delete _etat;
+    /*if (_etat != nullptr)
+          delete _etat;*/
     _etat = nouvel_etat;
     _etat->setCase(this);
 }

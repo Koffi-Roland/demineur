@@ -6,8 +6,7 @@
 int main(int argc, char *argv[])
 {
 
-    Grille * grille = Grille::getInstance();
-    grille->getCases();
+
 
     QApplication a(argc, argv);
     MainWindow w;
