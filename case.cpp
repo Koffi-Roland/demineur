@@ -56,6 +56,8 @@ int Case::getNombreMines(){
 void Case::passerAlEtat(Etat *nouvel_etat){
     /*if (_etat != nullptr)
           delete _etat;*/
-    _etat = nouvel_etat;
-    _etat->setCase(this);
+     nouvel_etat->setCase(this);
+
+   /* _etat = nouvel_etat;
+    _etat->setCase(this);*/
 }
