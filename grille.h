@@ -21,7 +21,6 @@ public:
     static Grille* getInstance();
     Case* getCase(size_t,size_t);
     std::vector<std::vector<Case*>> getCases();
-    bool existe(size_t, size_t);
     size_t getLigne();
     size_t getColonne();
     void setMines(int);

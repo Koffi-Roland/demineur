@@ -51,14 +51,11 @@ size_t Grille::getColonne(){
     return  colonne;
 }
 
-bool Grille::existe(size_t i, size_t j) {
-    return  0 <= i && i < ligne && 0 <= j && j < colonne  ;
-}
-
 void Grille::setMines(int n) {
     for (size_t i = 0; i < ligne; ++i) {
         for (size_t j = 0; j < colonne; ++j) {
-            getCase(i,j)->setMinee();
+            if(i==j)
+                getCase(i,j)->setMinee();
         }
     }
 }
