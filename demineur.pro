@@ -23,7 +23,8 @@ SOURCES += \
     etat.cpp \
     nondevoilee.cpp \
     marquee.cpp \
-    devoilee.cpp
+    devoilee.cpp \
+    fenetre.cpp
 
 HEADERS += \
     case.h \
@@ -32,7 +33,8 @@ HEADERS += \
     etat.h \
     nondevoilee.h \
     marquee.h \
-    devoilee.h
+    devoilee.h \
+    fenetre.h
 
 FORMS += \
     mainwindow.ui
