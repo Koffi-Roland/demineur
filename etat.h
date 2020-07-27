@@ -12,6 +12,7 @@ public:
     void setCase(Case *_case);
     virtual void devoiler() = 0;
     virtual void marquer() = 0;
+    virtual void desactiver() = 0;
     virtual ~Etat();
 };
 

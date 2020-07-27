@@ -35,12 +35,22 @@ Grille* Grille::getInstance()
 }
 
 Case* Grille::getCase(size_t i, size_t j){
-    return  Grille::getCases()[i][j];
+    return  cases[i][j];
 }
 
-std::vector<std::vector<Case *>> Grille::getCases()
+Case* Grille::getCase(size_t i){
+    return  getCases()[i];
+}
+
+std::vector<Case *> Grille::getCases()
 {
-    return cases;
+    std::vector<Case *> _cases;
+    for (size_t i = 0; i < ligne; ++i) {
+        for (size_t j = 0; j < colonne; ++j) {
+            _cases.push_back(getCase(i,j));
+        }
+    }
+    return _cases;
 }
 
 size_t Grille::getLigne(){
@@ -52,11 +62,26 @@ size_t Grille::getColonne(){
 }
 
 void Grille::setMines(int n) {
-    for (size_t i = 0; i < ligne; ++i) {
-        for (size_t j = 0; j < colonne; ++j) {
-            if(i==j)
-                getCase(i,j)->setMinee();
+    for (int i = 0; i < n; ++i) {
+        size_t randomNumber = (rand() % 89) + 1;
+        getCase(randomNumber)->setMinee();
+    }
+}
+
+void Grille::devoilerMinees() {
+    for (Case *_case :  getCases()) {
+        if(_case->estMinee()) {
+           _case->devoiler();
         }
     }
 }
 
+void Grille::desactiverCases() {
+    for (Case *_case :  getCases()) {
+           _case->desactiver();
+    }
+}
+
+void Grille::terminerAvecEchec() {
+    desactiverCases();
+}

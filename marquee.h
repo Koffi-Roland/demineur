@@ -9,6 +9,7 @@ public:
     Marquee();
     void devoiler();
     void marquer();
+    void desactiver();
 };
 
 #endif // MARQUEE_H

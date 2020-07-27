@@ -24,7 +24,8 @@ SOURCES += \
     nondevoilee.cpp \
     marquee.cpp \
     devoilee.cpp \
-    fenetre.cpp
+    fenetre.cpp \
+    desactivee.cpp
 
 HEADERS += \
     case.h \
@@ -34,7 +35,8 @@ HEADERS += \
     nondevoilee.h \
     marquee.h \
     devoilee.h \
-    fenetre.h
+    fenetre.h \
+    desactivee.h
 
 FORMS += \
     mainwindow.ui

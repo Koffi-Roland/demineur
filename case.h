@@ -25,6 +25,8 @@ public:
     void passerAlEtat(Etat*);
     void devoiler();
     void marquer();
+    void desactiver();
+    void devoilerVoisines();
     Grille* getGrille(){
         return _grille;
     }

@@ -9,6 +9,7 @@ public:
     Devoilee();
     void devoiler();
     void marquer();
+    void desactiver();
 };
 
 #endif // DEVOILEE_H

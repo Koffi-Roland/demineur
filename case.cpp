@@ -18,6 +18,10 @@ void Case::marquer(){
     _etat->marquer();
 }
 
+void Case::desactiver() {
+    _etat->desactiver();
+}
+
 void Case::setMinee(){
     minee = true;
 }
@@ -28,12 +32,10 @@ bool Case::estMinee(){
 
 std::vector<Case*> Case::getVoisines(){
     std::vector<Case*> voisines;
-
     size_t min_x = (x == 0) ? 0 : x-1;
     size_t min_y = (y == 0) ? 0 : y-1;
     size_t max_x = (x == getGrille()->getLigne()-1) ? getGrille()->getLigne()-1 : x+1;
     size_t max_y = (y == getGrille()->getColonne()-1) ? getGrille()->getColonne()-1 : y+1;
-
     for (size_t i = min_x; i <= max_x; ++i) {
         for (size_t j = min_y; j <= max_y; ++j) {
             if(i !=x || j != y){
@@ -45,9 +47,8 @@ std::vector<Case*> Case::getVoisines(){
 }
 
 int Case::getNombreMines(){
-    std::vector<Case*> voisines = getVoisines();
     int n = 0;
-    for (Case *voisine : voisines) {
+    for (Case *voisine :  getVoisines()) {
         n +=  (voisine->estMinee()) ? 1 : 0;
     }
    return n;
@@ -60,4 +61,10 @@ void Case::passerAlEtat(Etat *nouvel_etat){
 
    /* _etat = nouvel_etat;
     _etat->setCase(this);*/
+}
+
+void Case::devoilerVoisines(){
+    for (Case *voisine :  getVoisines()) {
+        voisine->devoiler();
+    }
 }

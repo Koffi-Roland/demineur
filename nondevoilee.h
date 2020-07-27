@@ -9,6 +9,7 @@ public:
     NonDevoilee();
     void devoiler();
     void marquer();
+    void desactiver();
 };
 
 #endif // NONDEVOILEE_H

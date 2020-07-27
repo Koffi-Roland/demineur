@@ -20,10 +20,14 @@ public:
    ~Grille(void);
     static Grille* getInstance();
     Case* getCase(size_t,size_t);
-    std::vector<std::vector<Case*>> getCases();
+    Case* getCase(size_t);
+    std::vector<Case*> getCases();
     size_t getLigne();
     size_t getColonne();
     void setMines(int);
+    void devoilerMinees();
+    void desactiverCases();
+    void terminerAvecEchec();
 };
 
 #endif // GRILLE_H
