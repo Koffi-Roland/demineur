@@ -80,6 +80,7 @@ public:
                char const *pchar = s.c_str();
                _case->setText(QApplication::translate("MainWindow", pchar , Q_NULLPTR));
                grille->addWidget(_case, i, j, 1, 1);
+
            }
        }
 

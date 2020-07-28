@@ -51,7 +51,8 @@ int Case::getNombreMines(){
     for (Case *voisine :  getVoisines()) {
         n +=  (voisine->estMinee()) ? 1 : 0;
     }
-   return n;
+    return n;
+   // return   (estMinee()) ? 1 : 0;
 }
 
 void Case::passerAlEtat(Etat *nouvel_etat){
