@@ -10,15 +10,11 @@ class Grille
 private:
     size_t ligne;
     size_t colonne;
-    std::vector<std::vector<Case*>> cases;
-    static Grille* instance;
-    /*Constructeur privé pour éviter l'instanciation*/
+    std::vector<Case*> cases;
+public:
     Grille();
     Grille(size_t,size_t);
-
-public:
    ~Grille(void);
-    static Grille* getInstance();
     Case* getCase(size_t,size_t);
     Case* getCase(size_t);
     std::vector<Case*> getCases();

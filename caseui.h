@@ -12,16 +12,13 @@ class CaseUI:public QPushButton
 private:
     Case *_case;
 public:
-    explicit CaseUI(Case*, const QString &text, QWidget *parent = Q_NULLPTR);
-    CaseUI();
+   explicit CaseUI(Case*, size_t, QWidget *parent = Q_NULLPTR);
+   CaseUI();
    Case* getCase();
    QString getNombreMines();
-   void auClick();
+   void auClickDroit();
+   void auClickGauche();
    ~CaseUI();
-
-
-
-
 };
 
 #endif // CASEUI_H

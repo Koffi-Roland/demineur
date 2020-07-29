@@ -5,10 +5,13 @@
 
 }*/
 
-
-CaseUI::CaseUI(Case* case_,const QString &text, QWidget *parent ) :QPushButton(text,parent){
-
+CaseUI::CaseUI(Case* case_, size_t taille, QWidget *parent) :QPushButton("",parent){
     _case=case_;
+    this->setText(getNombreMines());
+    this->setGeometry(QRect(
+        QPoint(taille * getCase()->getX(), taille * getCase()->getY()),
+        QSize(taille, taille)
+    ));
 }
 
 Case* CaseUI::getCase(){
@@ -26,8 +29,12 @@ QString CaseUI::getNombreMines(){
     return pchar;
 }
 
-void CaseUI::auClick(){
+void CaseUI::auClickDroit(){
+    this->getCase()->devoiler();
+    this->setText("d"); // Pour tester
+}
 
-    this->setText("2");
-
+void CaseUI::auClickGauche(){
+    this->getCase()->marquer();
+    this->setText("m"); // Pour tester
 }
