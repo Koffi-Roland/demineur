@@ -8,8 +8,12 @@ int main(int argc, char *argv[])
 
 
 
-    QApplication a(argc, argv);
+   /* QApplication a(argc, argv);
     MainWindow w;
-    w.show();
-    return a.exec();
+    w.show();*/
+
+    QApplication app(argc, argv);
+       MainWindow mainWindow;
+       mainWindow.showMaximized();
+    return app.exec();
 }

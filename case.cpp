@@ -10,6 +10,13 @@ Case::Case(size_t _x, size_t _y, Etat *_etat_initial, Grille *grille)
     this->passerAlEtat(_etat_initial);
     this->_grille = grille;
 }
+
+size_t Case::getX(){
+  return x;
+}
+size_t Case::getY(){
+  return y;
+}
 void Case::devoiler(){
     _etat->devoiler();
 }

@@ -63,7 +63,9 @@ size_t Grille::getColonne(){
 
 void Grille::setMines(int n) {
     for (int i = 0; i < n; ++i) {
-        getCase(rand() % 81)->setMinee();
+       // getCase(rand() % 81)->setMinee();
+        getCase(i)->setMinee();
+
     }
 }
 

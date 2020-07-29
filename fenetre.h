@@ -17,12 +17,27 @@
 #include <QtWidgets/QWidget>
 #include <vector>
 #include <grille.h>
+#include <QtGui>
+#include <QtCore>
+#include <QMessageBox>
+#include <QtWidgets/QPushButton>
+
 
 QT_BEGIN_NAMESPACE
 
-class fenetre
+class fenetre:public QMainWindow
 {
+   Q_OBJECT
+private slots:
+    void handlebutton(){
+        _case->setText("Example");
+    };
+
+private:
+    explicit fenetre(QWidget *parent = 0);
+
 public:
+
    QAction *actionVersion_1;
    QAction *actionAZIAWOR_KOFFI;
    QAction *actionCOUBADJA_MAYI_MOUNA;
@@ -35,6 +50,8 @@ public:
    QMenu *menuAide;
    QMenu *menuParticipants;
    QStatusBar *statusbar;
+   QPushButton *_case;
+
 
    void setupUi2(QMainWindow *MainWindow)
    {
@@ -71,10 +88,14 @@ public:
        for (int i = 0; i < grille_metier->getLigne(); ++i) {
            //  std::vector<QToolButton*> ligne;
            for (int j = 0; j < grille_metier->getColonne(); ++j) {
-               QToolButton *_case;
-               _case = new QToolButton(centralwidget);
-               _case->setObjectName(QStringLiteral("case24"));
+              // QToolButton *_case;
+               _case = new QPushButton(centralwidget);
+
+              // _case = new QToolButton(centralwidget);
+               //_case->setObjectName(QStringLiteral("case24"));
                _case->setMinimumSize(QSize(40, 40));
+               connect(_case, SIGNAL (clicked()),this, SLOT (handlebutton()));
+
                int n = grille_metier->getCase(i,j)->getNombreMines();
                std::string s = std::to_string(n);
                char const *pchar = s.c_str();
@@ -133,5 +154,6 @@ public:
 };
 
 namespace Ui {
-class MainWindow: public fenetre {};
+class fenetre;
+        //: public fenetre {};
 } // namespace Ui

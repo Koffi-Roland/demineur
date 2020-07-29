@@ -27,6 +27,9 @@ public:
     void marquer();
     void desactiver();
     void devoilerVoisines();
+    size_t getX();
+    size_t getY();
+
     Grille* getGrille(){
         return _grille;
     }

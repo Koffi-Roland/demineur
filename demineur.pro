@@ -17,7 +17,9 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     case.cpp \
+    caseui.cpp \
     grille.cpp \
+    grilleui.cpp \
     main.cpp \
     mainwindow.cpp \
     etat.cpp \
@@ -29,7 +31,9 @@ SOURCES += \
 
 HEADERS += \
     case.h \
+    caseui.h \
     grille.h \
+    grilleui.h \
     mainwindow.h \
     etat.h \
     nondevoilee.h \
