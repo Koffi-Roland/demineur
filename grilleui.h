@@ -10,10 +10,11 @@ class GrilleUI
 
 private:
     Grille *grille;
-    std::vector<std::vector<CaseUI*>> casesUI;
+    std::vector<CaseUI*> casesUI;
+    size_t tailleCase = 35;
 public:
     GrilleUI();
-    GrilleUI(QWidget*);
+    GrilleUI(QWidget*, size_t, size_t);
 
     CaseUI* getCaseUI(size_t,size_t);
     CaseUI* getCaseUI(size_t);

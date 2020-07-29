@@ -2,36 +2,19 @@
 #include "caseui.h"
 #include "grille.h"
 
-
-
-
-GrilleUI::GrilleUI(QWidget* parent)
+GrilleUI::GrilleUI(QWidget* parent, size_t ligne, size_t colonne)
 {
-grille=Grille::getInstance();
-
-
-for (size_t i = 0; i < grille->getLigne(); ++i) {
-    std::vector<CaseUI *> ligne;
-    for (size_t j = 0; j < grille->getColonne(); ++j) {
-        Case *_case=grille->getCase(i,j);
-
-        CaseUI *_caseui = new CaseUI(_case,"1",parent );
-        _caseui->setText(_caseui->getNombreMines());
-        ligne.push_back(_caseui);
-
+    grille = new Grille(ligne, colonne);
+    for (Case *_case :  grille->getCases()) {
+        CaseUI *_caseui = new CaseUI(_case, tailleCase, parent );
+        casesUI.push_back(_caseui);
     }
-    casesUI.push_back(ligne);
-
-}
 }
 
+GrilleUI::GrilleUI(){}
 
-GrilleUI::GrilleUI()
-{
-
-}
 CaseUI* GrilleUI::getCaseUI(size_t i, size_t j){
-    return  casesUI[i][j];
+    return  casesUI[i * tailleCase + j];
 }
 
 CaseUI* GrilleUI::getCaseUI(size_t i){
@@ -40,11 +23,5 @@ CaseUI* GrilleUI::getCaseUI(size_t i){
 
 std::vector<CaseUI *> GrilleUI::getCasesUI()
 {
-    std::vector<CaseUI *> _cases;
-    for (size_t i = 0; i < grille->getLigne(); ++i) {
-        for (size_t j = 0; j < grille->getColonne(); ++j) {
-            _cases.push_back(getCaseUI(i,j));
-        }
-    }
-    return _cases;
+    return casesUI;
 }

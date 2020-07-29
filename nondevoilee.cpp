@@ -10,7 +10,7 @@ NonDevoilee::NonDevoilee(){ }
 void NonDevoilee::devoiler(){
    _case->passerAlEtat(new Devoilee());
    if(_case->estMinee()){
-      Grille::getInstance()->terminerAvecEchec();
+      _case->getGrille()->terminerAvecEchec();
    }
    if(_case->getNombreMines() == 0){
         _case->devoilerVoisines();
