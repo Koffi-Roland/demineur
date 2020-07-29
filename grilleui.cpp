@@ -14,7 +14,7 @@ GrilleUI::GrilleUI(QWidget* parent, size_t ligne, size_t colonne)
 GrilleUI::GrilleUI(){}
 
 CaseUI* GrilleUI::getCaseUI(size_t i, size_t j){
-    return  casesUI[i * tailleCase + j];
+    return  casesUI[i * grille->getColonne() + j];
 }
 
 CaseUI* GrilleUI::getCaseUI(size_t i){
