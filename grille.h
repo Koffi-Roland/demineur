@@ -11,19 +11,21 @@ class Grille : private InterfaceGrille
 private:
     size_t ligne;
     size_t colonne;
+    size_t nombreMines;
     std::vector<Case*> cases;
 public:
     Grille();
-    Grille(size_t,size_t);
+    Grille(size_t,size_t, size_t);
    ~Grille(void);
     Case* getCase(size_t,size_t);
     Case* getCase(size_t);
     std::vector<Case*> getCases();
     size_t getLigne();
     size_t getColonne();
-    void setMines(int);
-    void devoilerMinees();
+    void setMines(Case *);
+    std::vector<Case*> getMinees();
     void desactiverCases();
+    void initialierCases();
     void terminerAvecEchec();
 };
 

@@ -20,7 +20,6 @@ size_t Case::getY(){
 }
 
 void Case::devoiler(){
-    qDebug() << "Case::devoiler, Etat =" << _etat;
     _etat->devoiler();
 }
 
@@ -67,6 +66,7 @@ int Case::getNombreMines(){
 
 void Case::passerAlEtat(Etat *nouvel_etat){
      nouvel_etat->setCase(this);
+     _etat = nouvel_etat;
 }
 
 int Case::getEtat(){

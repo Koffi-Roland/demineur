@@ -17,13 +17,14 @@ private:
     size_t tailleCase = 35;
 public:
     GrilleUI();
-    GrilleUI(QWidget*, size_t, size_t);
+    GrilleUI(QWidget*, size_t, size_t, size_t);
 
     CaseUI* getCaseUI(size_t,size_t);
     CaseUI* getCaseUI(size_t);
     std::vector<CaseUI*> getCasesUI();
+    void rafraichir();
+    void devoilerMinees();
     void terminerAvecEchec();
-
 };
 
 #endif // GRILLEUI_H
