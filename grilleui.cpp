@@ -25,3 +25,7 @@ std::vector<CaseUI *> GrilleUI::getCasesUI()
 {
     return casesUI;
 }
+
+void GrilleUI::terminerAvecEchec() {
+    grille->terminerAvecEchec();
+}

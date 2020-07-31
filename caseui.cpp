@@ -1,9 +1,21 @@
 #include "caseui.h"
 
-/*CaseUI::CaseUI()
+CaseUI::CaseUI()
 {
 
-}*/
+}
+
+void CaseUI::devoiler(){
+    _case->devoiler();
+}
+
+void CaseUI::marquer(){
+    _case->marquer();
+}
+
+void CaseUI::desactiver() {
+    _case->desactiver();
+}
 
 CaseUI::CaseUI(Case* case_, size_t taille, QWidget *parent) :QPushButton("",parent){
     _case=case_;
@@ -17,9 +29,9 @@ CaseUI::CaseUI(Case* case_, size_t taille, QWidget *parent) :QPushButton("",pare
 Case* CaseUI::getCase(){
     return _case;
 }
-CaseUI::~CaseUI(){
-    delete this ;
 
+CaseUI::~CaseUI() {
+    delete this ;
 }
 
 QString CaseUI::getNombreMines(){

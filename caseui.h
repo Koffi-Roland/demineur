@@ -3,10 +3,7 @@
 #include <QPushButton>
 #include "case.h"
 
-
-
-
-class CaseUI:public QPushButton
+class CaseUI: private InterfaceCase, public QPushButton
 {
 
 private:
@@ -18,6 +15,9 @@ public:
    QString getNombreMines();
    void auClickDroit();
    void auClickGauche();
+   void devoiler();
+   void marquer();
+   void desactiver();
    ~CaseUI();
 };
 

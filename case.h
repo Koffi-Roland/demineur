@@ -1,12 +1,13 @@
 #ifndef CASE_H
 #define CASE_H
 #include <iostream>
-#include "etat.h"
 #include <vector>
+#include "etat.h"
+#include "interfacecase.h"
 
 class Grille;
 
-class Case
+class Case : private InterfaceCase
 {
 private:
     size_t x;
@@ -17,7 +18,7 @@ private:
 public:
     Case();
     Case(size_t, size_t, Etat *, Grille *);
-    ~Case(void);
+    ~Case();
     std::vector<Case*> getVoisines();
     int getNombreMines();
     void setMinee();
