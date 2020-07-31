@@ -17,6 +17,7 @@ size_t Case::getX(){
 size_t Case::getY(){
   return y;
 }
+
 void Case::devoiler(){
     _etat->devoiler();
 }

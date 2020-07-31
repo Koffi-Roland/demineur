@@ -3,8 +3,9 @@
 #include <vector>
 #include <iostream>
 #include "case.h"
+#include "interfacegrille.h"
 
-class Grille
+class Grille : private InterfaceGrille
 {
 
 private:

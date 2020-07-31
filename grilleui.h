@@ -5,7 +5,7 @@
 #include "grille.h"
 
 
-class GrilleUI
+class GrilleUI : private InterfaceGrille
 {
 
 private:
@@ -19,6 +19,7 @@ public:
     CaseUI* getCaseUI(size_t,size_t);
     CaseUI* getCaseUI(size_t);
     std::vector<CaseUI*> getCasesUI();
+    void terminerAvecEchec();
 
 };
 
