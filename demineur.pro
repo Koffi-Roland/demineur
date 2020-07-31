@@ -27,7 +27,8 @@ SOURCES += \
     marquee.cpp \
     devoilee.cpp \
     desactivee.cpp \
-    interfacegrille.cpp
+    interfacegrille.cpp \
+    interfacecase.cpp
 
 HEADERS += \
     case.h \
@@ -41,7 +42,8 @@ HEADERS += \
     devoilee.h \
     desactivee.h \
     interfacecase.h \
-    interfacegrille.h
+    interfacegrille.h \
+    enumetats.h
 
 FORMS += \
     mainwindow.ui

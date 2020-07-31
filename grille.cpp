@@ -1,4 +1,3 @@
-
 #include "grille.h"
 #include "nondevoilee.h"
 
@@ -39,9 +38,7 @@ size_t Grille::getColonne(){
 
 void Grille::setMines(int n) {
     for (size_t i = 0; i < n; ++i) {
-       // getCase(rand() % 81)->setMinee();
-        getCase(i)->setMinee();
-
+       getCase(rand() % (colonne*ligne))->setMinee();
     }
 }
 
