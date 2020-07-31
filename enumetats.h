@@ -7,7 +7,7 @@ class EnumEtats
 public:
     enum
         {
-            Initiale = 1,
+            Initial = 1,
             NonDevoilee = 2,
             Devoilee = 3,
             Marquee = 4,

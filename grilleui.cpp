@@ -3,12 +3,12 @@
 #include "grille.h"
 #include <QDebug>
 
-GrilleUI::GrilleUI(QWidget* parent, size_t ligne, size_t colonne)
+GrilleUI::GrilleUI(QWidget* parent, size_t ligne, size_t colonne, size_t nombreMines)
 {
-    grille = new Grille(ligne, colonne);
-    grille->setMines(10);
+    grille = new Grille(ligne, colonne, nombreMines);
     for (Case *_case :  grille->getCases()) {
         CaseUI *_caseui = new CaseUI(_case, tailleCase, parent );
+        _caseui->setGrilleUI(this);
         casesUI.push_back(_caseui);
     }
 }
@@ -30,5 +30,12 @@ std::vector<CaseUI *> GrilleUI::getCasesUI()
 
 void GrilleUI::terminerAvecEchec() {
     grille->terminerAvecEchec();
+    rafraichir();
+}
+
+void GrilleUI::rafraichir(){
+    for (CaseUI *_caseui : getCasesUI()) {
+       _caseui->rafraichir();
+    }
 }
 

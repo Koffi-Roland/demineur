@@ -1,6 +1,8 @@
 #include "caseui.h"
 #include <QDebug>
+#include <QMouseEvent>
 #include "enumetats.h"
+#include "grilleui.h"
 
 CaseUI::CaseUI()
 {
@@ -9,7 +11,6 @@ CaseUI::CaseUI()
 
 
 void CaseUI::devoiler(){
-    qDebug() << "CaseUI::devoiler" << this;
     _case->devoiler();
 }
 
@@ -23,14 +24,6 @@ void CaseUI::desactiver() {
 
 CaseUI::CaseUI(Case* case_, size_t taille, QWidget *parent) :QPushButton("",parent){
     _case=case_;
-    this->setText(getNombreMines());
-
-    // Pour tester
-    if(_case->estMinee()){
-        this->setText("m");
-    }
-
-
     this->setGeometry(QRect(
         QPoint(taille * getCase()->getX(), taille * getCase()->getY()),
         QSize(taille, taille)
@@ -42,6 +35,13 @@ Case* CaseUI::getCase(){
     return _case;
 }
 
+GrilleUI * CaseUI::getGrilleUI(){
+    return grilleUI;
+}
+
+void CaseUI::setGrilleUI(GrilleUI * _grilleUI){
+    grilleUI = _grilleUI;
+}
 CaseUI::~CaseUI() {
     delete this ;
 }
@@ -56,18 +56,27 @@ QString CaseUI::getNombreMines(){
     return pchar;
 }
 
-void CaseUI::auClickDroit(QMouseEvent *event){
-    qDebug() << "droit:" << this;
+void CaseUI::auClickDroit(){
+    marquer();
 }
 
-void CaseUI::auClickGauche(QMouseEvent *event){
+void CaseUI::auClickGauche(){
     devoiler();
 }
+
 void CaseUI::mousePressEvent(QMouseEvent *event){
-    auClickGauche(event);
+
+    if (event->button() == Qt::LeftButton) {
+        auClickGauche();
+    }
+    if(event->button() == Qt::RightButton) {
+         auClickDroit();
+    }
+    CaseUI::getGrilleUI()->rafraichir();
 }
 
-void CaseUI::setApparence() {
+
+void CaseUI::rafraichir() {
     int etat = _case->getEtat();
     switch (etat) {
         case EnumEtats::NonDevoilee :
@@ -75,15 +84,16 @@ void CaseUI::setApparence() {
         break;
 
         case EnumEtats::Marquee :
-            this->setStyleSheet("background-color:#FF0000;");
-        break;
-
-        case EnumEtats::Devoilee :
-            this->setStyleSheet("background-color:white;");
+            this->setStyleSheet("background-color:#DDCC00;");
         break;
 
         case EnumEtats::Desactivee :
-            this->setStyleSheet("background-color:#CCCCCC;");
+            this->setStyleSheet((_case->estMinee()) ? "background-color:#FF0000" : "background-color:#CCCCCC");
+        break;
+
+        case EnumEtats::Devoilee :
+           this->setText(getNombreMines());
+           this->setStyleSheet("background-color:#FFFFFF;");
         break;
     }
 }
