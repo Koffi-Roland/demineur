@@ -19,6 +19,10 @@ size_t Case::getY(){
   return y;
 }
 
+Grille* Case::getGrille(){
+    return _grille;
+}
+
 void Case::devoiler(){
     _etat->devoiler();
 }
@@ -55,13 +59,20 @@ std::vector<Case*> Case::getVoisines(){
     return  voisines;
 }
 
+bool Case::estVoisine(Case *_case){
+    for (Case *voisine :  getVoisines()) {
+        if( _case == voisine || _case == this)
+            return true;
+    }
+    return false;
+}
+
 int Case::getNombreMines(){
     int n = 0;
     for (Case *voisine :  getVoisines()) {
         n +=  (voisine->estMinee()) ? 1 : 0;
     }
     return n;
-   // return   (estMinee()) ? 1 : 0;
 }
 
 void Case::passerAlEtat(Etat *nouvel_etat){
