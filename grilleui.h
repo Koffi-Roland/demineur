@@ -4,7 +4,6 @@
 #include "caseui.h"
 #include "grille.h"
 
-
 class GrilleUI : private InterfaceGrille
 {
 

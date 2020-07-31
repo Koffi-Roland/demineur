@@ -15,7 +15,7 @@ private:
 public:
     Grille();
     Grille(size_t,size_t);
-   ~Grille(void);
+   ~Grille();
     Case* getCase(size_t,size_t);
     Case* getCase(size_t);
     std::vector<Case*> getCases();

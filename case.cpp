@@ -2,6 +2,8 @@
 #include "grille.h"
 
 Case::Case(){}
+Case:: ~Case(){}
+
 
 Case::Case(size_t _x, size_t _y, Etat *_etat_initial, Grille *grille)
 {

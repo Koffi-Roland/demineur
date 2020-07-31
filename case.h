@@ -18,7 +18,7 @@ private:
 public:
     Case();
     Case(size_t, size_t, Etat *, Grille *);
-    ~Case();
+    ~Case(void);
     std::vector<Case*> getVoisines();
     int getNombreMines();
     void setMinee();

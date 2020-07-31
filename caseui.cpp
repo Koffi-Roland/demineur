@@ -5,6 +5,7 @@ CaseUI::CaseUI()
 
 }
 
+
 void CaseUI::devoiler(){
     _case->devoiler();
 }

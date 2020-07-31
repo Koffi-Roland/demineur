@@ -5,9 +5,9 @@
 class InterfaceGrille
 {
 public:
-    InterfaceGrille();
+   // InterfaceGrille();
     virtual void terminerAvecEchec() = 0;
-    virtual ~ InterfaceGrille();
+    //virtual ~ InterfaceGrille();
 };
 
 #endif // INTERFACEGRILLE_H
