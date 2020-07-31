@@ -8,12 +8,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
 
     grilleUI=new GrilleUI(this, 16, 16);
-    for (CaseUI *_caseui :  grilleUI->getCasesUI()) {
-        connect(_caseui, SIGNAL (clicked()), this, SLOT (handleButton()));
-    }
-}
-
-void MainWindow::handleButton()
-{
-qDebug() << "Date:" <<this;
+    grilleUI->setSpacing(0);
+    grilleUI->setObjectName(QStringLiteral("grille"));
+    grilleUI->setSizeConstraint(QLayout::SetNoConstraint);
 }

@@ -10,6 +10,7 @@ public:
     void devoiler();
     void marquer();
     void desactiver();
+    int getEtat();
 };
 
 #endif // MARQUEE_H

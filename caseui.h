@@ -6,6 +6,8 @@
 class CaseUI: private InterfaceCase, public QPushButton
 {
 
+private slots:
+    void clickGauche();
 private:
     Case *_case;
 public:
@@ -13,11 +15,13 @@ public:
    CaseUI();
    Case* getCase();
    QString getNombreMines();
-   void auClickDroit();
-   void auClickGauche();
+   void auClickDroit(QMouseEvent *);
+   void auClickGauche(QMouseEvent *);
+   void mousePressEvent(QMouseEvent *);
    void devoiler();
    void marquer();
    void desactiver();
+   void setApparence();
    ~CaseUI();
 };
 

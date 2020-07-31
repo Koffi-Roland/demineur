@@ -3,9 +3,13 @@
 #include <vector>
 #include "caseui.h"
 #include "grille.h"
+#include "interfacegrille.h"
+#include <QtWidgets/QGridLayout>
 
-class GrilleUI : private InterfaceGrille
+
+class GrilleUI : private InterfaceGrille, public QGridLayout
 {
+
 
 private:
     Grille *grille;

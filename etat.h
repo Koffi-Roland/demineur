@@ -13,6 +13,7 @@ public:
     virtual void devoiler() = 0;
     virtual void marquer() = 0;
     virtual void desactiver() = 0;
+    virtual int getEtat() = 0;
     virtual ~Etat();
 };
 

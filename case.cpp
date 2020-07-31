@@ -1,5 +1,6 @@
 #include "case.h"
 #include "grille.h"
+#include <QDebug>
 
 Case::Case(){}
 Case:: ~Case(){}
@@ -21,6 +22,7 @@ size_t Case::getY(){
 }
 
 void Case::devoiler(){
+    qDebug() << "Case::devoiler, Etat =" << _etat;
     _etat->devoiler();
 }
 
@@ -66,12 +68,11 @@ int Case::getNombreMines(){
 }
 
 void Case::passerAlEtat(Etat *nouvel_etat){
-    /*if (_etat != nullptr)
-          delete _etat;*/
      nouvel_etat->setCase(this);
+}
 
-   /* _etat = nouvel_etat;
-    _etat->setCase(this);*/
+int Case::getEtat(){
+    return _etat->getEtat();
 }
 
 void Case::devoilerVoisines(){
@@ -79,3 +80,7 @@ void Case::devoilerVoisines(){
         voisine->devoiler();
     }
 }
+
+Case::~Case() {
+}
+

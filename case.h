@@ -24,6 +24,7 @@ public:
     void setMinee();
     bool estMinee();
     void passerAlEtat(Etat*);
+    int getEtat();
     void devoiler();
     void marquer();
     void desactiver();
