@@ -7,6 +7,7 @@ class Marquee : public Etat
 {
 public:
     Marquee();
+    void initialiser();
     void devoiler();
     void marquer();
     void desactiver();

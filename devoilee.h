@@ -7,6 +7,7 @@ class Devoilee : public Etat
 {
 public:
     Devoilee();
+    void initialiser();
     void devoiler();
     void marquer();
     void desactiver();

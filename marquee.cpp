@@ -6,8 +6,9 @@
 
 Marquee::Marquee(){}
 
-void Marquee::devoiler(){
-}
+void Marquee::initialiser(){}
+
+void Marquee::devoiler(){}
 
 void Marquee::marquer(){
     _case->passerAlEtat(new NonDevoilee());

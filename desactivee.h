@@ -7,6 +7,7 @@ class Desactivee : public Etat
 {
 public:
     Desactivee();
+    void initialiser();
     void devoiler();
     void marquer();
     void desactiver();

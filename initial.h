@@ -6,6 +6,7 @@ class Initial : public Etat
 {
 public:
     Initial();
+    void initialiser();
     void devoiler();
     void marquer();
     void desactiver();

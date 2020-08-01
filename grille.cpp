@@ -10,7 +10,9 @@ Grille::Grille(size_t _ligne, size_t _colonne, size_t _nombreMines)
     colonne = _colonne;
     for (size_t i = 0; i < _ligne; ++i) {
         for (size_t j = 0; j < _colonne; ++j) {
-            cases.push_back(new Case(i, j, new Initial(), this));
+            Case *__case = new Case(i, j,this);
+            __case->passerAlEtat(new Initial());
+            cases.push_back(__case);
         }
     }
     nombreMines = _nombreMines;
@@ -69,10 +71,13 @@ void Grille::desactiverCases() {
 
 void Grille::initialierCases() {
     for (Case *_case :  getCases()) {
-           _case->passerAlEtat(new NonDevoilee());
+           _case->initialiser();
     }
 }
 
 void Grille::terminerAvecEchec() {
     desactiverCases();
+}
+size_t Grille::getNombreMineesRestant() {
+    return 5;
 }

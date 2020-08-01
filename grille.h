@@ -24,6 +24,7 @@ public:
     size_t getColonne();
     void setMines(Case *);
     std::vector<Case*> getMinees();
+    size_t getNombreMineesRestant();
     void desactiverCases();
     void initialierCases();
     void terminerAvecEchec();

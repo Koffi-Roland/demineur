@@ -3,9 +3,10 @@
 
 Desactivee::Desactivee(){}
 
+void Desactivee::initialiser(){}
 void Desactivee::devoiler(){}
 void Desactivee::marquer(){}
-void Desactivee::desactiver(){};
+void Desactivee::desactiver(){}
 int Desactivee::getEtat(){
     return EnumEtats::Desactivee;
 }

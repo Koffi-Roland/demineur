@@ -5,6 +5,8 @@
 #include "grille.h"
 #include "interfacegrille.h"
 #include <QtWidgets/QGridLayout>
+#include <QtWidgets/QLabel>
+#include <QTimer>
 
 
 class GrilleUI : private InterfaceGrille, public QGridLayout
@@ -15,6 +17,8 @@ private:
     Grille *grille;
     std::vector<CaseUI*> casesUI;
     size_t tailleCase = 35;
+    QLabel* nombreMinesMasquees;
+    QTimer* temps;
 public:
     GrilleUI();
     GrilleUI(QWidget*, size_t, size_t, size_t);
