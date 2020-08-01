@@ -11,7 +11,7 @@ void Devoilee::devoiler(){}
 void Devoilee::marquer(){}
 
 void Devoilee::desactiver() {
-    _case->passerAlEtat(new Desactivee());
+   // _case->passerAlEtat(new Desactivee());
 };
 
 int Devoilee::getEtat(){

@@ -84,11 +84,13 @@ void CaseUI::rafraichir() {
         break;
 
         case EnumEtats::Marquee :
-            this->setStyleSheet("background-color:#DDCC00;");
+            this->setIcon(QIcon("open.xpm"));
+            this->setStyleSheet("background-color:#FFAA00;");
         break;
 
         case EnumEtats::Desactivee :
-            this->setStyleSheet((_case->estMinee()) ? "background-color:#FF0000" : "background-color:#CCCCCC");
+            this->setDisabled(true);
+            this->setStyleSheet((_case->estMinee()) ? "background-color:#FF0000" : "");
         break;
 
         case EnumEtats::Devoilee :

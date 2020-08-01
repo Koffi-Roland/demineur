@@ -42,7 +42,7 @@ size_t Grille::getColonne(){
 void Grille::setMines(Case * _caseInitial) {
     for (size_t i = 0; i < nombreMines ; ++i) {
        Case *_case = getCase(rand() % (colonne*ligne));
-       if(_caseInitial == _case) {
+       if(_case->estVoisine(_caseInitial)) {
            i--;
            continue;
        }

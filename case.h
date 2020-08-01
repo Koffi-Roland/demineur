@@ -25,16 +25,14 @@ public:
     bool estMinee();
     void passerAlEtat(Etat*);
     int getEtat();
+    void devoilerVoisines();
+    bool estVoisine(Case *);
+    size_t getX();
+    size_t getY();
+    Grille* getGrille();
     void devoiler();
     void marquer();
     void desactiver();
-    void devoilerVoisines();
-    size_t getX();
-    size_t getY();
-
-    Grille* getGrille(){
-        return _grille;
-    }
 };
 
 #endif // CASE_H
