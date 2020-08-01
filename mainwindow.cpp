@@ -6,6 +6,7 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
+
     grilleUI=new GrilleUI(this, 16, 16, 50);
     grilleUI->setSpacing(0);
     grilleUI->setObjectName(QStringLiteral("grille"));

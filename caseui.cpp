@@ -84,13 +84,15 @@ void CaseUI::rafraichir() {
         break;
 
         case EnumEtats::Marquee :
-            this->setIcon(QIcon("open.xpm"));
+            this->setIcon(QIcon("C:/demineur/10409.png"));
             this->setStyleSheet("background-color:#FFAA00;");
         break;
 
         case EnumEtats::Desactivee :
             this->setDisabled(true);
             this->setStyleSheet((_case->estMinee()) ? "background-color:#FF0000" : "");
+            this->setIcon(QIcon((_case->estMinee()) ? "C:/demineur/bombe_.png":""));
+
         break;
 
         case EnumEtats::Devoilee :
