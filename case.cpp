@@ -4,11 +4,10 @@
 
 Case::Case(){}
 
-Case::Case(size_t _x, size_t _y, Etat *_etat_initial, Grille *grille)
+Case::Case(size_t _x, size_t _y, Grille *grille)
 {
     x = _x;
     y = _y;
-    this->passerAlEtat(_etat_initial);
     this->_grille = grille;
 }
 
@@ -21,6 +20,10 @@ size_t Case::getY(){
 
 Grille* Case::getGrille(){
     return _grille;
+}
+
+void Case::initialiser(){
+    _etat->initialiser();
 }
 
 void Case::devoiler(){

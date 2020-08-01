@@ -17,7 +17,7 @@ private:
     Etat *_etat;
 public:
     Case();
-    Case(size_t, size_t, Etat *, Grille *);
+    Case(size_t, size_t, Grille *);
     ~Case();
     std::vector<Case*> getVoisines();
     int getNombreMines();
@@ -30,6 +30,7 @@ public:
     size_t getX();
     size_t getY();
     Grille* getGrille();
+    void initialiser();
     void devoiler();
     void marquer();
     void desactiver();

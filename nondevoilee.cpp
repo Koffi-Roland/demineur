@@ -7,8 +7,9 @@
 #include "enumetats.h"
 #include <QDebug>
 
-NonDevoilee::NonDevoilee(){ }
+NonDevoilee::NonDevoilee(){}
 
+void NonDevoilee::initialiser(){}
 void NonDevoilee::devoiler(){
    if(_case->estMinee()){
       _case->getGrille()->terminerAvecEchec();

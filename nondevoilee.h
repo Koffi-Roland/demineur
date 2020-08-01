@@ -7,6 +7,7 @@ class NonDevoilee : public Etat
 {
 public:
     NonDevoilee();
+    void initialiser();
     void devoiler();
     void marquer();
     void desactiver();

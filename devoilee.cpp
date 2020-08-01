@@ -6,6 +6,8 @@
 
 Devoilee::Devoilee(){}
 
+void Devoilee::initialiser(){}
+
 void Devoilee::devoiler(){}
 
 void Devoilee::marquer(){}
