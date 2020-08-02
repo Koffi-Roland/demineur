@@ -8,27 +8,31 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
 
-
+    this->resize(600, 620);
     QWidget *centralwidget = new QWidget(this);
 
-    QGridLayout  *basegridLayout = new QGridLayout(centralwidget);
-    basegridLayout->setSpacing(0);
-    basegridLayout->setObjectName(QStringLiteral("gridLayout_3"));
-    basegridLayout->setContentsMargins(0, 0, 0, 0);
+    QVBoxLayout *verticalLayout = new QVBoxLayout(centralwidget);
+    verticalLayout->setObjectName(QStringLiteral("VerticalLayout"));
 
-    //   QWidget *window = new QWidget;
+
     QLabel *bombe = new QLabel("0");
     bombe->setStyleSheet("background-color:#FF0000;");
-    bombe->setMargin(10);
+    bombe->setContentsMargins(15,20,10,30);
+    bombe->setMinimumHeight(30);
+    bombe->setMinimumWidth(30);
+
     QLabel *mineRestant = new QLabel("0");
     mineRestant->setStyleSheet("background-color:#FFFFFF;");
+    mineRestant->setContentsMargins(15,20,10,30);
+    mineRestant->setMinimumHeight(30);
+    mineRestant->setMinimumWidth(30);
 
 
     QTimer *timer = new QTimer(this);
     QGridLayout *labelAndTimer = new QGridLayout;
     labelAndTimer->setObjectName(QStringLiteral("labelAndTimer"));
     labelAndTimer->setSizeConstraint(QLayout::SetNoConstraint);
-//    labelAndTimer->setMargin(20);
+    labelAndTimer->setVerticalSpacing(10);
 
     labelAndTimer->addWidget(bombe, 10, 10);
     labelAndTimer->addWidget(mineRestant, 10, 15);
@@ -40,32 +44,13 @@ MainWindow::MainWindow(QWidget *parent)
     grilleUI->setSpacing(0);
     grilleUI->setObjectName(QStringLiteral("grille"));
     grilleUI->setSizeConstraint(QLayout::SetNoConstraint);
-    basegridLayout->addLayout(grilleUI, 0, 0, 1, 1);
-    basegridLayout->addLayout(labelAndTimer, 0, 0, 1,1);
 
 
-    /* QGridLayout *layout = new QGridLayout;
-    layout->addWidget(button1, 0, 0);
-    layout->addWidget(button2, 0, 1);*/
+    verticalLayout->addLayout(labelAndTimer);
+    verticalLayout->addLayout(grilleUI);
 
-    // grilleUI->addWidget(button1,20,20);
-    //this->setCentralWidget(centralwidget);
+
+
     this->show();
 
-    /* QGridLayout *layout = new QGridLayout;
-    layout->addWidget(button1, 0, 0);
-    layout->addWidget(button2, 0, 1);
-    layout->addLayout(grilleUI, 1, 0, 1, 2);
-
-
-    window->setLayout(layout);
-    this->show();*/
-
-    /*QWidget *centralwidget = new QWidget(this);
-
-    grilleUI=new GrilleUI(centralwidget, 16, 16, 50);
-    grilleUI->setSpacing(0);
-    grilleUI->setObjectName(QStringLiteral("grille"));
-    grilleUI->setSizeConstraint(QLayout::SetNoConstraint);
-    this->setCentralWidget(centralwidget);*/
 }
