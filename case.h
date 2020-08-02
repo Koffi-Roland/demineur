@@ -13,6 +13,7 @@ private:
     size_t x;
     size_t y;
     bool minee = false;
+    bool marquee = false;
     Grille *_grille;
     Etat *_etat;
 public:

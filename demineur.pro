@@ -29,7 +29,8 @@ SOURCES += \
     desactivee.cpp \
     interfacegrille.cpp \
     interfacecase.cpp \
-    initial.cpp
+    initial.cpp \
+    marqueedesactivee.cpp
 
 HEADERS += \
     case.h \
@@ -45,7 +46,8 @@ HEADERS += \
     interfacecase.h \
     interfacegrille.h \
     enumetats.h \
-    initial.h
+    initial.h \
+    marqueedesactivee.h
 
 FORMS += \
     mainwindow.ui

@@ -1,7 +1,7 @@
 #include "marquee.h"
 #include "case.h"
 #include "nondevoilee.h"
-#include "desactivee.h"
+#include "marqueedesactivee.h"
 #include "enumetats.h"
 
 Marquee::Marquee(){}
@@ -15,9 +15,9 @@ void Marquee::marquer(){
 }
 
 void Marquee::desactiver() {
-     _case->passerAlEtat(new Desactivee());
+    _case->passerAlEtat(new MarqueeDesactivee());
 }
 
 int Marquee::getEtat(){
     return EnumEtats::Marquee;
-};
+}

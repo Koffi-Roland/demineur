@@ -11,7 +11,8 @@ public:
             NonDevoilee = 2,
             Devoilee = 3,
             Marquee = 4,
-            Desactivee = 5
+            Desactivee = 5,
+            MarqueeDesactivee = 6
         };
 };
 
