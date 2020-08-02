@@ -12,8 +12,8 @@ GrilleUI::GrilleUI(QWidget* parent, size_t ligne, size_t colonne, size_t nombreM
         casesUI.push_back(_caseui);
     }
 
-    nombreMinesMasquees = new QLabel(parent);
-    nombreMinesMasquees->setText("Bonjour");
+    //nombreMinesMasquees = new QLabel(parent);
+  //  nombreMinesMasquees->setText("Bonjour");
 }
 
 GrilleUI::GrilleUI(){}

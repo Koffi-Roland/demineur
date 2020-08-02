@@ -17,8 +17,8 @@ private:
     Grille *grille;
     std::vector<CaseUI*> casesUI;
     size_t tailleCase = 35;
-    QLabel* nombreMinesMasquees;
-    QTimer* temps;
+   // QLabel* nombreMinesMasquees;
+   // QTimer* temps;
 public:
     GrilleUI();
     GrilleUI(QWidget*, size_t, size_t, size_t);
