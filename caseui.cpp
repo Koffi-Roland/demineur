@@ -25,8 +25,9 @@ void CaseUI::desactiver() {
 CaseUI::CaseUI(Case* case_, size_t taille, QWidget *parent) :QPushButton("",parent){
     _case=case_;
 
+
     this->setGeometry(QRect(
-        QPoint(taille * getCase()->getX()+50, taille * getCase()->getY()+50),
+        QPoint(taille * getCase()->getX()+9, taille * getCase()->getY()+40),
         QSize(taille, taille)
     ));
     this->setStyleSheet("background-color:#B1CBCB;");
