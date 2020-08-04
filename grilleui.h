@@ -17,6 +17,7 @@ private:
     Grille *grille;
     std::vector<CaseUI*> casesUI;
     size_t tailleCase = 25;
+    size_t _nombreMines;
    // QLabel* nombreMinesMasquees;
    // QTimer* temps;
 public:
@@ -29,6 +30,8 @@ public:
     void rafraichir();
     void devoilerMinees();
     void terminerAvecEchec();
+    QString getNombreMinees();
+
 };
 
 #endif // GRILLEUI_H

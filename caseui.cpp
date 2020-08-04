@@ -83,19 +83,23 @@ void CaseUI::rafraichir() {
     switch (etat) {
         case EnumEtats::NonDevoilee :
             this->setStyleSheet("background-color:#B1CBCB;");
+        this->setIcon(QIcon(""));
+
         break;
 
         case EnumEtats::Marquee :
-            this->setIcon(QIcon("C:/demineur/10409.png"));
+            this->setIcon(QIcon(":/resources/img/flag.png"));
             this->setStyleSheet("background-color:#FFAA00;");
         break;
 
         case EnumEtats::Desactivee :
+
            // this->setDisabled(true);
             if (this->getCase()->estMinee()){
                 this->setText("x");
-
-               // this->setStyleSheet((_case->estMinee()) ? "background-color:#FF0000" : "");
+                this->setDisabled(true);
+                this->setStyleSheet("background-color:#FF0000");
+                this->setIcon(QIcon((_case->estMinee()) ? ":/resources/img/bombe_.png":""));
             }
              //this->setIcon(QIcon((_case->estMinee()) ? "C:/demineur/bombe_.png":""));
         break;

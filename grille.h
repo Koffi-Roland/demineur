@@ -4,6 +4,7 @@
 #include <iostream>
 #include "case.h"
 #include "interfacegrille.h"
+#include <QString>
 
 class Grille : private InterfaceGrille
 {
@@ -25,6 +26,7 @@ public:
     void setMines(Case *);
     std::vector<Case*> getMinees();
     size_t getNombreMineesRestant();
+
     void desactiverCases();
     void initialierCases();
     void terminerAvecEchec();
