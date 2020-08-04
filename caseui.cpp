@@ -91,16 +91,25 @@ void CaseUI::rafraichir() {
         break;
 
         case EnumEtats::Desactivee :
-            this->setDisabled(true);
-            this->setStyleSheet((_case->estMinee()) ? "background-color:#FF0000" : "");
-            this->setIcon(QIcon((_case->estMinee()) ? "C:/demineur/bombe_.png":""));
+           // this->setDisabled(true);
+            if (this->getCase()->estMinee()){
+                this->setText("x");
 
+               // this->setStyleSheet((_case->estMinee()) ? "background-color:#FF0000" : "");
+            }
+             //this->setIcon(QIcon((_case->estMinee()) ? "C:/demineur/bombe_.png":""));
         break;
 
         case EnumEtats::Devoilee :
            this->setText(getNombreMines());
            this->setStyleSheet("background-color:#FFFFFF;");
         break;
+    case EnumEtats::MarqueeDesactivee :
+        if (this->getCase()->estMinee()){
+            this->setText("*");
+        }
+
+    break;
     }
 }
 

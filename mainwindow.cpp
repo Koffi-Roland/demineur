@@ -9,6 +9,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
 
     this->resize(600, 620);
+    // this->minimumSize();
     QWidget *centralwidget = new QWidget(this);
 
     QVBoxLayout *verticalLayout = new QVBoxLayout(centralwidget);
@@ -40,7 +41,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     //labelAndTimer->addWidget(timer, 0, 1);
 
-    grilleUI=new GrilleUI(this, 16, 16, 50);
+    grilleUI=new GrilleUI(this, 20, 15, 50);
     grilleUI->setSpacing(0);
     grilleUI->setObjectName(QStringLiteral("grille"));
     grilleUI->setSizeConstraint(QLayout::SetNoConstraint);

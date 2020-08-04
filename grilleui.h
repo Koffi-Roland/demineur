@@ -16,7 +16,7 @@ class GrilleUI : private InterfaceGrille, public QGridLayout
 private:
     Grille *grille;
     std::vector<CaseUI*> casesUI;
-    size_t tailleCase = 35;
+    size_t tailleCase = 25;
    // QLabel* nombreMinesMasquees;
    // QTimer* temps;
 public:
