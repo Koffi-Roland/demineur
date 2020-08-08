@@ -3,7 +3,16 @@
 
 #include <QCoreApplication>
 #include <QTimer>
+#include <string>
 
+
+void MainWindow::chrono(){
+    counter++ ;
+    QString::number(counter);
+    mineRestant->setText( QString::number(counter));
+    qDebug()<< QString::number(counter);
+
+}
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
@@ -19,24 +28,36 @@ MainWindow::MainWindow(QWidget *parent)
     verticalLayout->setObjectName(QStringLiteral("VerticalLayout"));
 
 
-    QLabel *bombe = new QLabel("0");
+
+
+    /*  QLabel */
+    bombe = new QLabel("0");
     bombe->setStyleSheet("background-color:#000000;color:#FFFFFF");
     bombe->setContentsMargins(15,20,10,30);
     bombe->setMinimumHeight(30);
     bombe->setMinimumWidth(30);
     bombe->setFont(font);
 
-    QLabel *mineRestant = new QLabel("0d");
+
+
+
+
+    /*QLabel */
+    mineRestant = new QLabel("0d");
     mineRestant->setStyleSheet("background-color:#FFAA00;color:#FFFFFF");
     mineRestant->setContentsMargins(15,20,10,30);
     mineRestant->setMinimumHeight(30);
     mineRestant->setMinimumWidth(30);
     mineRestant->setFont(font);
 
+    /* Partie timer*/
+    _Timer=new QTimer(this);
 
-    QTimer *timer = new QTimer(this);
-    timer->start(100);
-   // timer->connect()
+    QObject::connect(_Timer, SIGNAL(timeout()), this,SLOT(chrono()));
+    _Timer->start();
+
+    /* Partie timer*/
+
 
     QGridLayout *labelAndTimer = new QGridLayout;
     labelAndTimer->setObjectName(QStringLiteral("labelAndTimer"));
@@ -53,7 +74,7 @@ MainWindow::MainWindow(QWidget *parent)
     grilleUI->setSpacing(0);
     grilleUI->setObjectName(QStringLiteral("grille"));
     grilleUI->setSizeConstraint(QLayout::SetNoConstraint);
-    bombe->setText(grilleUI->getNombreMinees());
+    //bombe->setText(grilleUI->getNombreMinees());
 
     verticalLayout->addLayout(labelAndTimer);
     verticalLayout->addLayout(grilleUI);
