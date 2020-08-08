@@ -11,10 +11,12 @@ GrilleUI::GrilleUI(QWidget* parent, size_t ligne, size_t colonne, size_t nombreM
         _caseui->setGrilleUI(this);
         casesUI.push_back(_caseui);
     }
-
-    //nombreMinesMasquees = new QLabel(parent);
-  //  nombreMinesMasquees->setText("Bonjour");
+    nombreMinesMasquees = new QLabel(getNombreMinees());
+    tempsEcoule = new QLabel("0");
+    this->addWidget(nombreMinesMasquees, 10, 10);
+    this->addWidget(tempsEcoule, 10, 15);
 }
+
 QString GrilleUI::getNombreMinees(){
     return std::to_string(grille->getNombreMineesRestant()).c_str();
 }
@@ -43,5 +45,6 @@ void GrilleUI::rafraichir(){
     for (CaseUI *_caseui : getCasesUI()) {
        _caseui->rafraichir();
     }
+    nombreMinesMasquees->setText(getNombreMinees());
 }
 

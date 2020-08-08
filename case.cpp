@@ -39,6 +39,7 @@ void Case::desactiver() {
 }
 
 void Case::setMinee(){
+
     minee = true;
 }
 
@@ -46,6 +47,13 @@ bool Case::estMinee(){
     return minee;
 }
 
+bool Case::estSaturee(int saturation) {
+    for (Case *voisine :  getVoisines()) {
+        if(voisine->getNombreMines() >= saturation )
+            return true;
+    }
+    return false;
+}
 std::vector<Case*> Case::getVoisines(){
     std::vector<Case*> voisines;
     size_t min_x = (x == 0) ? 0 : x-1;

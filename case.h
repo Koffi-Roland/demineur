@@ -24,6 +24,7 @@ public:
     int getNombreMines();
     void setMinee();
     bool estMinee();
+    bool estSaturee(int saturation);
     void passerAlEtat(Etat*);
     int getEtat();
     void devoilerVoisines();

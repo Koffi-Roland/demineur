@@ -43,13 +43,14 @@ size_t Grille::getColonne(){
 }
 
 void Grille::setMines(Case * _caseInitial) {
-    for (size_t i = 0; i < nombreMines ; ++i) {
+    size_t i = 0;
+    srand(time(0));
+    while (i < nombreMines) {
        Case *_case = getCase(rand() % (colonne*ligne));
-       if(_case->estVoisine(_caseInitial)) {
-           i--;
-           continue;
+       if(! _case->estVoisine(_caseInitial) && ! _case->estSaturee(saturation)) {
+            _case->setMinee();
+            i++;
        }
-       _case->setMinee();
     }
     initialierCases();
 }
@@ -80,7 +81,7 @@ void Grille::terminerAvecEchec() {
     desactiverCases();
 }
 size_t Grille::getNombreMineesRestant() {
-    return nombreMines - getNombreMarquees();
+  return nombreMines - getNombreMarquees();
 }
 
 size_t Grille::getNombreMarquees() {

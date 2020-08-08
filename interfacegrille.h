@@ -4,8 +4,8 @@
 
 class InterfaceGrille
 {
-public:
-    virtual void terminerAvecEchec() = 0;
+    public:
+        virtual void terminerAvecEchec() = 0;
 };
 
 #endif // INTERFACEGRILLE_H

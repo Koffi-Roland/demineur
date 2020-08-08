@@ -14,10 +14,11 @@ private:
     size_t colonne;
     size_t nombreMines;
     std::vector<Case*> cases;
+    int saturation = 2; // Nombres maximale de mines autour d'une case
 public:
     Grille();
     Grille(size_t,size_t, size_t);
-   ~Grille(void);
+    ~ Grille();
     Case* getCase(size_t,size_t);
     Case* getCase(size_t);
     std::vector<Case*> getCases();

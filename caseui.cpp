@@ -9,7 +9,6 @@ CaseUI::CaseUI()
 
 }
 
-
 void CaseUI::devoiler(){
     _case->devoiler();
 }
@@ -60,6 +59,7 @@ QString CaseUI::getNombreMines(){
 
 void CaseUI::auClickDroit(){
     marquer();
+
 }
 
 void CaseUI::auClickGauche(){
