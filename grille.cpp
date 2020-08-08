@@ -91,9 +91,8 @@ size_t Grille::getNombreMarquees() {
     return  n;
 }
 
-size_t Grille::getTempEcoule(){
-   // return (size_t) (std::time(nullptr) - tempsDebut);
-    return 55;
+int Grille::getTempEcoule(){
+    return (tempsDebut == 0) ? 0 : (double)(std::time(nullptr)-tempsDebut);
 }
 
 void Grille::terminerAvecEchec() {

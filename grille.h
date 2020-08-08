@@ -16,7 +16,7 @@ private:
     size_t colonne;
     size_t nombreMines;
     std::vector<Case*> cases;
-    std::time_t tempsDebut;
+    std::time_t tempsDebut = 0;
     int saturation = 2; // Nombres maximale de mines autour d'une case
 public:
     Grille();
@@ -33,7 +33,7 @@ public:
     size_t getNombreMarquees();
     void desactiverCases();
     void initialierCases();
-    size_t getTempEcoule();
+    int getTempEcoule();
     void terminerAvecEchec();
 };
 

@@ -18,7 +18,7 @@ GrilleUI::GrilleUI(QWidget* parent, size_t ligne, size_t colonne, size_t nombreM
     this->addWidget(labelTempsEcoule, 10, 15);
 
     _timer=new QTimer(this);
-    _timer->setInterval(1000);
+    _timer->setInterval(100);
 }
 
 QString GrilleUI::getNombreMinees(){
