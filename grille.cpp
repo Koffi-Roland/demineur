@@ -1,6 +1,7 @@
 #include "grille.h"
 #include "initial.h"
 #include "nondevoilee.h"
+#include "enumetats.h"
 
 Grille::Grille(){}
 
@@ -79,5 +80,15 @@ void Grille::terminerAvecEchec() {
     desactiverCases();
 }
 size_t Grille::getNombreMineesRestant() {
-    return 5;
+    return nombreMines - getNombreMarquees();
+}
+
+size_t Grille::getNombreMarquees() {
+    size_t n = 0;
+    for (Case *_case :  getCases()) {
+        if(_case->getEtat() == EnumEtats::Marquee) {
+            n++;
+        }
+    }
+    return  n;
 }

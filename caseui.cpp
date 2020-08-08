@@ -79,12 +79,11 @@ void CaseUI::mousePressEvent(QMouseEvent *event){
 
 
 void CaseUI::rafraichir() {
+
     int etat = _case->getEtat();
     switch (etat) {
         case EnumEtats::NonDevoilee :
             this->setStyleSheet("background-color:#B1CBCB;");
-        this->setIcon(QIcon(""));
-
         break;
 
         case EnumEtats::Marquee :
@@ -93,15 +92,11 @@ void CaseUI::rafraichir() {
         break;
 
         case EnumEtats::Desactivee :
-
-           // this->setDisabled(true);
+            // this->setDisabled(true);
             if (this->getCase()->estMinee()){
-                this->setText("x");
-                this->setDisabled(true);
                 this->setStyleSheet("background-color:#FF0000");
-                this->setIcon(QIcon((_case->estMinee()) ? ":/resources/img/bombe_.png":""));
+                this->setIcon(QIcon(":/resources/img/bombe_.png"));
             }
-             //this->setIcon(QIcon((_case->estMinee()) ? "C:/demineur/bombe_.png":""));
         break;
 
         case EnumEtats::Devoilee :
@@ -109,10 +104,10 @@ void CaseUI::rafraichir() {
            this->setStyleSheet("background-color:#FFFFFF;");
         break;
     case EnumEtats::MarqueeDesactivee :
+        this->setIcon(QIcon(""));
         if (this->getCase()->estMinee()){
-            this->setText("*");
+            this->setIcon(QIcon(":/resources/img/bombe_.png"));
         }
-
     break;
     }
 }

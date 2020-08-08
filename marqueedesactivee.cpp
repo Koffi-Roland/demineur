@@ -16,5 +16,5 @@ void MarqueeDesactivee::desactiver() {
 }
 
 int MarqueeDesactivee::getEtat(){
-    return EnumEtats::Marquee;
+    return EnumEtats::MarqueeDesactivee;
 }

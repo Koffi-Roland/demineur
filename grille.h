@@ -26,7 +26,7 @@ public:
     void setMines(Case *);
     std::vector<Case*> getMinees();
     size_t getNombreMineesRestant();
-
+    size_t getNombreMarquees();
     void desactiverCases();
     void initialierCases();
     void terminerAvecEchec();

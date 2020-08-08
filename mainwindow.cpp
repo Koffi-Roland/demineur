@@ -26,7 +26,7 @@ MainWindow::MainWindow(QWidget *parent)
     bombe->setMinimumWidth(30);
     bombe->setFont(font);
 
-    QLabel *mineRestant = new QLabel("0");
+    QLabel *mineRestant = new QLabel("0d");
     mineRestant->setStyleSheet("background-color:#FFAA00;color:#FFFFFF");
     mineRestant->setContentsMargins(15,20,10,30);
     mineRestant->setMinimumHeight(30);
@@ -35,6 +35,8 @@ MainWindow::MainWindow(QWidget *parent)
 
 
     QTimer *timer = new QTimer(this);
+    timer->start(100);
+   // timer->connect()
 
     QGridLayout *labelAndTimer = new QGridLayout;
     labelAndTimer->setObjectName(QStringLiteral("labelAndTimer"));
@@ -47,7 +49,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     //labelAndTimer->addWidget(timer, 0, 1);
 
-    grilleUI=new GrilleUI(this, 20, 15, 50);
+    grilleUI=new GrilleUI(this, 20, 15, 40);
     grilleUI->setSpacing(0);
     grilleUI->setObjectName(QStringLiteral("grille"));
     grilleUI->setSizeConstraint(QLayout::SetNoConstraint);
@@ -55,8 +57,6 @@ MainWindow::MainWindow(QWidget *parent)
 
     verticalLayout->addLayout(labelAndTimer);
     verticalLayout->addLayout(grilleUI);
-
-
 
     this->show();
 
