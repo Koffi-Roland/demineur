@@ -7,11 +7,7 @@
 
 
 void MainWindow::chrono(){
-    counter++ ;
-    QString::number(counter);
-    mineRestant->setText( QString::number(counter));
-    qDebug()<< QString::number(counter);
-
+     grilleUI->setTempsEcoule();
 }
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -27,57 +23,14 @@ MainWindow::MainWindow(QWidget *parent)
     QVBoxLayout *verticalLayout = new QVBoxLayout(centralwidget);
     verticalLayout->setObjectName(QStringLiteral("VerticalLayout"));
 
-
-
-
-    /*  QLabel */
-    bombe = new QLabel("0");
-    bombe->setStyleSheet("background-color:#000000;color:#FFFFFF");
-    bombe->setContentsMargins(15,20,10,30);
-    bombe->setMinimumHeight(30);
-    bombe->setMinimumWidth(30);
-    bombe->setFont(font);
-
-
-
-
-
-    /*QLabel */
-    mineRestant = new QLabel("0d");
-    mineRestant->setStyleSheet("background-color:#FFAA00;color:#FFFFFF");
-    mineRestant->setContentsMargins(15,20,10,30);
-    mineRestant->setMinimumHeight(30);
-    mineRestant->setMinimumWidth(30);
-    mineRestant->setFont(font);
-
-    /* Partie timer*/
-    _Timer=new QTimer(this);
-
-    QObject::connect(_Timer, SIGNAL(timeout()), this,SLOT(chrono()));
-    _Timer->start();
-
-    /* Partie timer*/
-
-
-    QGridLayout *labelAndTimer = new QGridLayout;
-    labelAndTimer->setObjectName(QStringLiteral("labelAndTimer"));
-    labelAndTimer->setSizeConstraint(QLayout::SetNoConstraint);
-    labelAndTimer->setVerticalSpacing(10);
-
-    labelAndTimer->addWidget(bombe, 10, 10);
-    labelAndTimer->addWidget(mineRestant, 10, 15);
-
-
-    //labelAndTimer->addWidget(timer, 0, 1);
-
     grilleUI=new GrilleUI(this, 20, 15, 40);
     grilleUI->setSpacing(0);
-    grilleUI->setObjectName(QStringLiteral("grille"));
     grilleUI->setSizeConstraint(QLayout::SetNoConstraint);
-    //bombe->setText(grilleUI->getNombreMinees());
-
-    verticalLayout->addLayout(labelAndTimer);
     verticalLayout->addLayout(grilleUI);
+
+    /* Partie timer*/
+    QObject::connect(grilleUI->getTimer(), SIGNAL(timeout()), this,SLOT(chrono()));
+    grilleUI->getTimer()->start();
 
     this->show();
 

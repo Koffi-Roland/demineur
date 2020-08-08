@@ -13,6 +13,7 @@ void Initial::initialiser(){
 }
 void Initial::devoiler(){
     _case->getGrille()->setMines(_case);
+
     this->initialiser();
     _case->devoiler();
 }

@@ -17,19 +17,22 @@ private:
     Grille *grille;
     std::vector<CaseUI*> casesUI;
     size_t tailleCase = 25;
-    QLabel* nombreMinesMasquees;
-    QLabel* tempsEcoule;
+    QLabel* labelNombreMinesMasquees;
+    QLabel* labelTempsEcoule;
+    QTimer* _timer;
 public:
     GrilleUI();
     GrilleUI(QWidget*, size_t, size_t, size_t);
 
     CaseUI* getCaseUI(size_t,size_t);
     CaseUI* getCaseUI(size_t);
+    QTimer* getTimer();
     std::vector<CaseUI*> getCasesUI();
     void rafraichir();
     void devoilerMinees();
     void terminerAvecEchec();
     QString getNombreMinees();
+    void setTempsEcoule();
 
 };
 

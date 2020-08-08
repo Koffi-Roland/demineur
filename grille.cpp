@@ -4,7 +4,6 @@
 #include "enumetats.h"
 
 Grille::Grille(){}
-
 Grille::Grille(size_t _ligne, size_t _colonne, size_t _nombreMines)
 {
     ligne = _ligne;
@@ -75,11 +74,9 @@ void Grille::initialierCases() {
     for (Case *_case :  getCases()) {
            _case->initialiser();
     }
+    tempsDebut = std::time(nullptr);
 }
 
-void Grille::terminerAvecEchec() {
-    desactiverCases();
-}
 size_t Grille::getNombreMineesRestant() {
   return nombreMines - getNombreMarquees();
 }
@@ -92,4 +89,13 @@ size_t Grille::getNombreMarquees() {
         }
     }
     return  n;
+}
+
+size_t Grille::getTempEcoule(){
+   // return (size_t) (std::time(nullptr) - tempsDebut);
+    return 55;
+}
+
+void Grille::terminerAvecEchec() {
+    desactiverCases();
 }
