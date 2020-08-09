@@ -14,6 +14,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
 
     this->resize(600, 620);
+    this->setWindowIcon(QIcon(":/resources/img/bombe_.png"));
     // this->minimumSize();
     QWidget *centralwidget = new QWidget(this);
     QFont font;
@@ -33,5 +34,11 @@ MainWindow::MainWindow(QWidget *parent)
     grilleUI->getTimer()->start();
 
     this->show();
+
+
+
+
+    /*=====================New template add====================*/
+
 
 }
