@@ -7,27 +7,47 @@
 
 
 void MainWindow::chrono(){
-     grilleUI->setTempsEcoule();
+    grilleUI->setTempsEcoule();
 }
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
 
-    this->resize(600, 620);
+
+    this->resize(800, 600);
+    // this->setFixedSize(800,600);
     this->setWindowIcon(QIcon(":/resources/img/bombe_.png"));
-    // this->minimumSize();
+
+
     QWidget *centralwidget = new QWidget(this);
     QFont font;
     font.setBold(true);
     font.setWeight(75);
     centralwidget->setFont(font);
-    QVBoxLayout *verticalLayout = new QVBoxLayout(centralwidget);
-    verticalLayout->setObjectName(QStringLiteral("VerticalLayout"));
+    QGridLayout  *gridLayoutGlobal = new QGridLayout(centralwidget);
+    gridLayoutGlobal->setSpacing(0);
 
-    grilleUI=new GrilleUI(this, 20, 15, 40);
+
+
+    grilleUI=new GrilleUI(this,15,20,20);
     grilleUI->setSpacing(0);
-    grilleUI->setSizeConstraint(QLayout::SetNoConstraint);
-    verticalLayout->addLayout(grilleUI);
+
+    gridLayoutGlobal->addLayout(grilleUI->getZoneLabel(), 0, 0, 1, 1);
+
+
+
+    gridLayoutGlobal->addLayout(grilleUI, 1, 0, 1, 1);
+
+
+    size_t marge= size_t((this->geometry().width()-gridLayoutGlobal->geometry().width())/2);
+
+    this->setContentsMargins(marge ,0,marge, 0);
+
+
+
+    this->setCentralWidget(centralwidget);
+
+
 
     /* Partie timer*/
     QObject::connect(grilleUI->getTimer(), SIGNAL(timeout()), this,SLOT(chrono()));
@@ -38,7 +58,6 @@ MainWindow::MainWindow(QWidget *parent)
 
 
 
-    /*=====================New template add====================*/
 
 
 }

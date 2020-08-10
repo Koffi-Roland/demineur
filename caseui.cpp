@@ -21,15 +21,24 @@ void CaseUI::desactiver() {
     _case->desactiver();
 }
 
-CaseUI::CaseUI(Case* case_, size_t taille, QWidget *parent) :QPushButton("",parent){
+CaseUI::CaseUI(QGridLayout *grille,Case* case_, size_t taille, QWidget *parent) :QPushButton("",parent){
     _case=case_;
 
 
-    this->setGeometry(QRect(
+   /* this->setGeometry(QRect(
         QPoint(taille * getCase()->getX()+9, taille * getCase()->getY()+40),
         QSize(taille, taille)
-    ));
+    ));*/
     this->setStyleSheet("background-color:#B1CBCB;");
+
+
+    this->setMinimumSize(QSize(taille, taille));
+    this->setMaximumSize(QSize(taille, taille));
+
+     grille->addWidget(this, _case->getX(), _case->getY(), 1, 1);
+
+
+
 }
 
 Case* CaseUI::getCase(){

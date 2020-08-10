@@ -20,6 +20,8 @@ private:
     QLabel* labelNombreMinesMasquees;
     QLabel* labelTempsEcoule;
     QTimer* _timer;
+    QGridLayout  *zoneLabel;
+
 public:
     GrilleUI();
     GrilleUI(QWidget*, size_t, size_t, size_t);
@@ -28,6 +30,12 @@ public:
     CaseUI* getCaseUI(size_t);
     QTimer* getTimer();
     std::vector<CaseUI*> getCasesUI();
+    size_t getLargeur();
+    size_t getLongueur();
+    QLabel* getLabelNombreMinesMasquees();
+    QLabel* getLabelTempsEcoule();
+    QGridLayout* getZoneLabel();
+
     void rafraichir();
     void devoilerMinees();
     void terminerAvecEchec();

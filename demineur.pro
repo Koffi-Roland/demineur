@@ -30,8 +30,7 @@ SOURCES += \
     interfacegrille.cpp \
     interfacecase.cpp \
     initial.cpp \
-    marqueedesactivee.cpp \
-    template.cpp
+    marqueedesactivee.cpp
 
 HEADERS += \
     case.h \

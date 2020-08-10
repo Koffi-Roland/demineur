@@ -1,6 +1,8 @@
 #ifndef CASEUI_H
 #define CASEUI_H
 #include <QPushButton>
+#include <QGridLayout>
+
 #include "case.h"
 
 class GrilleUI;
@@ -14,7 +16,7 @@ private:
     GrilleUI * grilleUI;
     Case *_case;
 public:
-   explicit CaseUI(Case*, size_t, QWidget *parent = Q_NULLPTR);
+   explicit CaseUI(QGridLayout*,Case*, size_t, QWidget *parent = Q_NULLPTR);
    CaseUI();
    Case* getCase();
    QString getNombreMines();

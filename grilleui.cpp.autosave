@@ -13,6 +13,8 @@ GrilleUI::GrilleUI(QWidget* parent, size_t ligne, size_t colonne, size_t nombreM
                               QPoint(0, 0),
                               QSize(this->getLargeur(), 40)
                           ));*/
+   
+   
 
 
     labelNombreMinesMasquees = new QLabel(getNombreMinees());
