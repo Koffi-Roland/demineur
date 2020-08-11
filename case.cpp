@@ -39,7 +39,6 @@ void Case::desactiver() {
 }
 
 void Case::setMinee(){
-
     minee = true;
 }
 
