@@ -5,13 +5,11 @@
 #include "grilleui.h"
 
 
-CaseUI::CaseUI()
-{
+CaseUI::CaseUI(){}
 
-}
-
-void CaseUI::devoiler(){
+void CaseUI::devoiler() {
     _case->devoiler();
+    grilleUI->getPartie()->demarrer();
 }
 
 void CaseUI::marquer(){

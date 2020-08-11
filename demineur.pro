@@ -31,7 +31,8 @@ SOURCES += \
     interfacegrille.cpp \
     interfacecase.cpp \
     initial.cpp \
-    marqueedesactivee.cpp
+    marqueedesactivee.cpp \
+    partie.cpp
 
 HEADERS += \
     case.h \
@@ -48,7 +49,8 @@ HEADERS += \
     interfacegrille.h \
     enumetats.h \
     initial.h \
-    marqueedesactivee.h
+    marqueedesactivee.h \
+    partie.h
 
 FORMS += \
     mainwindow.ui

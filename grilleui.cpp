@@ -6,26 +6,7 @@
 GrilleUI::GrilleUI(QWidget* parent, size_t ligne, size_t colonne, size_t nombreMines)
 {
     grille = new Grille(ligne, colonne, nombreMines);
-
     zoneLabel  = new QGridLayout(parent);
-    labelNombreMinesMasquees = new QLabel(getNombreMinees());
-
-    // zoneLabel->addWidget(labelNombreMinesMasquees, 10, 10);
-
-    labelTempsEcoule = new QLabel("0");
-    //  zoneLabel->addWidget(labelTempsEcoule, 10, 15);
-    /*  zoneLabel->setGeometry(QRect(
-                              QPoint(0, 0),
-                              QSize(this->getLargeur(), 40)
-                          ));*/
-
-    QHBoxLayout *horizontalLayout = new QHBoxLayout();
-
-
-    QPushButton *nombre_bombe = new QPushButton(parent);
-    nombre_bombe->setIcon(QIcon(":/resources/img/bombe_.png"));
-    nombre_bombe->setMinimumSize(QSize(40, 40));
-    nombre_bombe->setMaximumSize(QSize(40, 40));
 
     nombre_bombe->setStyleSheet("border: none");
 
@@ -76,10 +57,9 @@ GrilleUI::GrilleUI(QWidget* parent, size_t ligne, size_t colonne, size_t nombreM
         _caseui->setGrilleUI(this);
         casesUI.push_back(_caseui);
     }
-
-
     _timer=new QTimer(this);
     _timer->setInterval(100);
+    nouvellePartie();
 }
 
 QLabel* GrilleUI::getLabelNombreMinesMasquees(){
@@ -88,17 +68,14 @@ QLabel* GrilleUI::getLabelNombreMinesMasquees(){
 
 }
 
-
 QLabel* GrilleUI::getLabelTempsEcoule(){
     return labelTempsEcoule;
 }
-
 
 QGridLayout* GrilleUI::getZoneLabel(){
 
     return zoneLabel;
 }
-
 
 size_t GrilleUI::getLargeur(){
     return tailleCase * grille->getColonne();
@@ -106,6 +83,10 @@ size_t GrilleUI::getLargeur(){
 size_t GrilleUI::getLongueur(){
     return tailleCase * grille->getLigne();
 
+}
+
+Partie* GrilleUI::getPartie() {
+    return  partie;
 }
 
 QString GrilleUI::getNombreMinees(){
@@ -132,8 +113,8 @@ std::vector<CaseUI *> GrilleUI::getCasesUI()
 }
 
 void GrilleUI::terminerAvecEchec() {
-    grille->terminerAvecEchec();
-    rafraichir();
+   /* grille->terminerAvecEchec();
+    rafraichir(); */
 }
 
 void GrilleUI::rafraichir(){
@@ -143,7 +124,12 @@ void GrilleUI::rafraichir(){
     labelNombreMinesMasquees->setText(getNombreMinees());
 }
 
-void GrilleUI::setTempsEcoule(){
-    labelTempsEcoule->setText(std::to_string(grille->getTempEcoule()).c_str());
+void GrilleUI::setTempsEcoule() {
+    labelTempsEcoule->setText(std::to_string(partie->getTempEcoule()).c_str());
+}
+
+void GrilleUI::nouvellePartie(){
+    partie = new Partie(grille);
+    rafraichir();
 }
 

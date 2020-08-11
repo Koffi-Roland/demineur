@@ -3,18 +3,19 @@
 #include <vector>
 #include "caseui.h"
 #include "grille.h"
+#include "partie.h"
 #include "interfacegrille.h"
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QLabel>
 #include <QTimer>
 
 
-class GrilleUI : private InterfaceGrille, public QGridLayout
+class GrilleUI :  private InterfaceGrille, public QGridLayout
 {
-
 
 private:
     Grille *grille;
+    Partie *partie;
     std::vector<CaseUI*> casesUI;
     size_t tailleCase = 25;
     QLabel* labelNombreMinesMasquees;
@@ -25,6 +26,7 @@ private:
 public:
     GrilleUI();
     GrilleUI(QWidget*, size_t, size_t, size_t);
+    Partie* getPartie();
 
     CaseUI* getCaseUI(size_t,size_t);
     CaseUI* getCaseUI(size_t);
@@ -35,12 +37,12 @@ public:
     QLabel* getLabelNombreMinesMasquees();
     QLabel* getLabelTempsEcoule();
     QGridLayout* getZoneLabel();
-
     void rafraichir();
     void devoilerMinees();
-    void terminerAvecEchec();
     QString getNombreMinees();
     void setTempsEcoule();
+    void nouvellePartie();
+    void terminerAvecEchec();
 
 };
 

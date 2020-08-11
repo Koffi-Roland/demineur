@@ -11,11 +11,12 @@ Grille::Grille(size_t _ligne, size_t _colonne, size_t _nombreMines)
     for (size_t i = 0; i < _ligne; ++i) {
         for (size_t j = 0; j < _colonne; ++j) {
             Case *__case = new Case(i, j,this);
-            __case->passerAlEtat(new Initial());
+             __case->passerAlEtat(new Initial());
             cases.push_back(__case);
         }
     }
     nombreMines = _nombreMines;
+   // initialiser(new Initial());
 }
 
 Grille::~Grille(){}
@@ -43,7 +44,7 @@ size_t Grille::getColonne(){
 
 void Grille::setMines(Case * _caseInitial) {
     size_t i = 0;
-    srand(time(0));
+    srand(time(nullptr));
     while (i < nombreMines) {
        Case *_case = getCase(rand() % (colonne*ligne));
        if(! _case->estVoisine(_caseInitial) && ! _case->estSaturee(saturation)) {
@@ -51,7 +52,7 @@ void Grille::setMines(Case * _caseInitial) {
             i++;
        }
     }
-    initialierCases();
+    initialiser();
 }
 
 std::vector<Case*> Grille::getMinees() {
@@ -64,17 +65,37 @@ std::vector<Case*> Grille::getMinees() {
     return  minees;
 }
 
+bool Grille::estTerminee(){
+    for (Case *_case :  getCases()) {
+        if(_case->getEtat() == EnumEtats::NonDevoilee) {
+            return false;
+        }
+    }
+    return true;
+}
+
 void Grille::desactiverCases() {
     for (Case *_case :  getCases()) {
            _case->desactiver();
     }
 }
 
-void Grille::initialierCases() {
+void Grille::initialiser() {
     for (Case *_case :  getCases()) {
            _case->initialiser();
     }
-    tempsDebut = std::time(nullptr);
+}
+
+void Grille::initialiser(Etat* etat) {
+    for (Case *_case :  getCases()) {
+           _case->passerAlEtat(etat);
+    }
+}
+
+void Grille::reinitialiser() {
+    for (Case *_case :  getCases()) {
+           _case->passerAlEtat(new Initial());
+    }
 }
 
 size_t Grille::getNombreMineesRestant() {
@@ -89,10 +110,6 @@ size_t Grille::getNombreMarquees() {
         }
     }
     return  n;
-}
-
-int Grille::getTempEcoule(){
-    return (tempsDebut == 0) ? 0 : (double)(std::time(nullptr)-tempsDebut);
 }
 
 void Grille::terminerAvecEchec() {
