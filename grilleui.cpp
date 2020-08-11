@@ -7,22 +7,69 @@ GrilleUI::GrilleUI(QWidget* parent, size_t ligne, size_t colonne, size_t nombreM
 {
     grille = new Grille(ligne, colonne, nombreMines);
 
-   zoneLabel  = new QGridLayout(parent);
+    zoneLabel  = new QGridLayout(parent);
+    labelNombreMinesMasquees = new QLabel(getNombreMinees());
 
- /*  zoneLabel->setGeometry(QRect(
+    // zoneLabel->addWidget(labelNombreMinesMasquees, 10, 10);
+
+    labelTempsEcoule = new QLabel("0");
+    //  zoneLabel->addWidget(labelTempsEcoule, 10, 15);
+    /*  zoneLabel->setGeometry(QRect(
                               QPoint(0, 0),
                               QSize(this->getLargeur(), 40)
                           ));*/
 
+    QHBoxLayout *horizontalLayout = new QHBoxLayout();
 
 
+    QPushButton *nombre_bombe = new QPushButton(parent);
+    nombre_bombe->setIcon(QIcon(":/resources/img/bombe_.png"));
+    nombre_bombe->setMinimumSize(QSize(40, 40));
+    nombre_bombe->setMaximumSize(QSize(40, 40));
 
-    labelNombreMinesMasquees = new QLabel(getNombreMinees());
+    nombre_bombe->setStyleSheet("border: none");
 
-    zoneLabel->addWidget(labelNombreMinesMasquees, 10, 10);
 
-    labelTempsEcoule = new QLabel("0");
-    zoneLabel->addWidget(labelTempsEcoule, 10, 15);
+    horizontalLayout->addWidget(nombre_bombe);
+    horizontalLayout->addWidget(labelNombreMinesMasquees);
+
+
+    QPushButton *time = new QPushButton(parent);
+    time->setIcon(QIcon(":/resources/img/chrono.png"));
+    time->setMinimumSize(QSize(40, 40));
+    time->setMaximumSize(QSize(40, 40));
+    time->setStyleSheet("border: none");
+
+
+    horizontalLayout->addWidget(time);
+    horizontalLayout->addWidget(labelTempsEcoule);
+
+    QPushButton *debutant = new QPushButton(parent);
+    debutant->setText("Nouvelle partie\n Débutant");
+
+    horizontalLayout->addWidget(debutant);
+
+    QPushButton *moyen = new QPushButton(parent);
+    moyen->setText("Nouvelle partie\n Moyen");
+
+    horizontalLayout->addWidget(moyen);
+
+
+    QPushButton *expert = new QPushButton(parent);
+    expert->setText("Nouvelle partie\n Expert");
+
+    horizontalLayout->addWidget(expert);
+
+
+    zoneLabel->addLayout(horizontalLayout, 0, 0, 1, 1);
+
+
+    // labelNombreMinesMasquees = new QLabel(getNombreMinees());
+
+    // zoneLabel->addWidget(labelNombreMinesMasquees, 10, 10);
+
+    //  labelTempsEcoule = new QLabel("0");
+    //  zoneLabel->addWidget(labelTempsEcoule, 10, 15);
 
     for (Case *_case :  grille->getCases()) {
         CaseUI *_caseui = new CaseUI(this,_case, tailleCase, parent );
@@ -91,7 +138,7 @@ void GrilleUI::terminerAvecEchec() {
 
 void GrilleUI::rafraichir(){
     for (CaseUI *_caseui : getCasesUI()) {
-       _caseui->rafraichir();
+        _caseui->rafraichir();
     }
     labelNombreMinesMasquees->setText(getNombreMinees());
 }
