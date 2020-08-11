@@ -106,9 +106,9 @@ void CaseUI::rafraichir() {
             if (this->getCase()->estMinee()){
                 this->setStyleSheet("background-color:#FF0000");
                 this->setIcon(QIcon(":/resources/img/bombe_.png"));
-                  son=new QSound(":/resources/son/son_bombe.wav");
+                 /* son=new QSound(":/resources/son/son_bombe.wav");
                    son->play();
-                  // son->stop();
+                   son->stop();*/
             }
         break;
 
