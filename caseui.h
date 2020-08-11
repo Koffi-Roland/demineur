@@ -2,6 +2,7 @@
 #define CASEUI_H
 #include <QPushButton>
 #include <QGridLayout>
+#include <QSound>
 
 #include "case.h"
 
@@ -15,6 +16,8 @@ private slots:
 private:
     GrilleUI * grilleUI;
     Case *_case;
+    QSound *son;
+
 public:
    explicit CaseUI(QGridLayout*,Case*, size_t, QWidget *parent = Q_NULLPTR);
    CaseUI();

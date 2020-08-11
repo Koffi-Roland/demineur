@@ -15,6 +15,8 @@ GrilleUI::GrilleUI(QWidget* parent, size_t ligne, size_t colonne, size_t nombreM
                           ));*/
 
 
+
+
     labelNombreMinesMasquees = new QLabel(getNombreMinees());
 
     zoneLabel->addWidget(labelNombreMinesMasquees, 10, 10);

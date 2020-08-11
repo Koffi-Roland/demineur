@@ -2,5 +2,6 @@
     <qresource prefix="/resources">
         <file>img/bombe_.png</file>
         <file>img/flag.png</file>
+        <file>son/son_bombe.wav</file>
     </qresource>
 </RCC>

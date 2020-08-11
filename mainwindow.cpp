@@ -29,14 +29,14 @@ MainWindow::MainWindow(QWidget *parent)
 
 
 
-    grilleUI=new GrilleUI(this,15,20,20);
+    grilleUI=new GrilleUI(this,15,20,40);
     grilleUI->setSpacing(0);
 
     gridLayoutGlobal->addLayout(grilleUI->getZoneLabel(), 0, 0, 1, 1);
 
 
 
-    gridLayoutGlobal->addLayout(grilleUI, 1, 0, 1, 1);
+    gridLayoutGlobal->addLayout(grilleUI,1, 0, 1, 1);
 
 
     size_t marge= size_t((this->geometry().width()-gridLayoutGlobal->geometry().width())/2);
