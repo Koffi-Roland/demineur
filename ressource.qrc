@@ -3,5 +3,9 @@
         <file>img/bombe_.png</file>
         <file>img/flag.png</file>
         <file>son/son_bombe.wav</file>
+        <file>img/time.png</file>
+        <file>img/_time.png</file>
+        <file>img/__time.png</file>
+        <file>img/chrono.png</file>
     </qresource>
 </RCC>

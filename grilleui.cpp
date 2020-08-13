@@ -10,20 +10,107 @@ GrilleUI::GrilleUI(QWidget* parent, size_t ligne, size_t colonne, size_t nombreM
 
     labelNombreMinesMasquees = new QLabel(getNombreMinees());
 
-    zoneLabel->addWidget(labelNombreMinesMasquees, 10, 10);
 
     labelTempsEcoule = new QLabel("0");
-    zoneLabel->addWidget(labelTempsEcoule, 10, 15);
 
+
+    QHBoxLayout *horizontalLayout = new QHBoxLayout();
+
+
+    QPushButton *nombre_bombe = new QPushButton(parent);
+    nombre_bombe->setIcon(QIcon(":/resources/img/bombe_.png"));
+    nombre_bombe->setMinimumSize(QSize(40, 40));
+    nombre_bombe->setMaximumSize(QSize(40, 40));
+
+    nombre_bombe->setStyleSheet("border: none");
+
+
+    horizontalLayout->addWidget(nombre_bombe);
+    horizontalLayout->addWidget(labelNombreMinesMasquees);
+
+
+    QPushButton *time = new QPushButton(parent);
+    time->setIcon(QIcon(":/resources/img/chrono.png"));
+    time->setMinimumSize(QSize(40, 40));
+    time->setMaximumSize(QSize(40, 40));
+    time->setStyleSheet("border: none");
+
+
+    horizontalLayout->addWidget(time);
+    horizontalLayout->addWidget(labelTempsEcoule);
+
+
+    nouvellePartie = new QPushButton(parent);
+    nouvellePartie->setText("Nouvelle partie");
+
+
+
+    horizontalLayout->addWidget(nouvellePartie);
+
+
+
+    debutant = new QPushButton(parent);
+    debutant->setText("Débutant");
+
+
+    horizontalLayout->addWidget(debutant);
+
+    moyen = new QPushButton(parent);
+    moyen->setText(" Moyen");
+
+    horizontalLayout->addWidget(moyen);
+
+
+    expert = new QPushButton(parent);
+    expert->setText("Expert");
+
+    horizontalLayout->addWidget(expert);
+
+
+    zoneLabel->addLayout(horizontalLayout, 0, 0, 1, 1);
+
+
+        initialiser(parent,ligne, colonne, nombreMines);
+
+    _timer=new QTimer(this);
+    _timer->setInterval(100);
+    rejouer();
+}
+
+
+void GrilleUI::initialiser(QWidget* parent,size_t ligne, size_t colonne, size_t nombreMines){
+    qDebug()<<"debug initialisation";
+
+    grille=new Grille(ligne, colonne, nombreMines);
     for (Case *_case :  grille->getCases()) {
         CaseUI *_caseui = new CaseUI(this,_case, tailleCase, parent );
         _caseui->setGrilleUI(this);
         casesUI.push_back(_caseui);
     }
-    _timer=new QTimer(this);
-    _timer->setInterval(100);
-    nouvellePartie();
+
 }
+
+QPushButton*  GrilleUI::getExpert(){
+
+    return expert;
+}
+
+QPushButton*  GrilleUI::getMoyen(){
+
+    return moyen;
+}
+QPushButton*  GrilleUI::getDebutant(){
+
+    return debutant;
+}
+QPushButton*  GrilleUI::getNouvellePartie(){
+
+    return nouvellePartie;
+}
+
+
+
+
 
 QLabel* GrilleUI::getLabelNombreMinesMasquees(){
 
@@ -76,13 +163,13 @@ std::vector<CaseUI *> GrilleUI::getCasesUI()
 }
 
 void GrilleUI::terminerAvecEchec() {
-   /* grille->terminerAvecEchec();
+    /* grille->terminerAvecEchec();
     rafraichir(); */
 }
 
 void GrilleUI::rafraichir(){
     for (CaseUI *_caseui : getCasesUI()) {
-       _caseui->rafraichir();
+        _caseui->rafraichir();
     }
     labelNombreMinesMasquees->setText(getNombreMinees());
 }
@@ -91,8 +178,7 @@ void GrilleUI::setTempsEcoule() {
     labelTempsEcoule->setText(std::to_string(partie->getTempEcoule()).c_str());
 }
 
-void GrilleUI::nouvellePartie(){
+void GrilleUI::rejouer(){
     partie = new Partie(grille);
     rafraichir();
 }
-

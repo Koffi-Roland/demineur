@@ -22,6 +22,10 @@ private:
     QLabel* labelTempsEcoule;
     QTimer* _timer;
     QGridLayout  *zoneLabel;
+    QPushButton *debutant;
+    QPushButton *moyen;
+    QPushButton *expert;
+    QPushButton *nouvellePartie;
 
 public:
     GrilleUI();
@@ -34,6 +38,11 @@ public:
     std::vector<CaseUI*> getCasesUI();
     size_t getLargeur();
     size_t getLongueur();
+    void initialiser(QWidget*, size_t, size_t, size_t);
+    QPushButton* getDebutant();
+    QPushButton* getMoyen();
+    QPushButton* getExpert();
+    QPushButton* getNouvellePartie();
     QLabel* getLabelNombreMinesMasquees();
     QLabel* getLabelTempsEcoule();
     QGridLayout* getZoneLabel();
@@ -41,7 +50,7 @@ public:
     void devoilerMinees();
     QString getNombreMinees();
     void setTempsEcoule();
-    void nouvellePartie();
+    void rejouer();
     void terminerAvecEchec();
 
 };
