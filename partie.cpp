@@ -19,7 +19,8 @@ void Partie::demarrer() {
     }
 }
 
-void Partie::terminer(){
+void Partie::terminer()
+{
     terminee = true;
 }
 

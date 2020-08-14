@@ -32,7 +32,8 @@ SOURCES += \
     interfacecase.cpp \
     initial.cpp \
     marqueedesactivee.cpp \
-    partie.cpp
+    partie.cpp \
+    presentation.cpp
 
 HEADERS += \
     case.h \
@@ -50,7 +51,8 @@ HEADERS += \
     enumetats.h \
     initial.h \
     marqueedesactivee.h \
-    partie.h
+    partie.h \
+    presentation.h
 
 FORMS += \
     mainwindow.ui

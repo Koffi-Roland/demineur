@@ -9,7 +9,7 @@ CaseUI::CaseUI(){}
 
 void CaseUI::devoiler() {
     _case->devoiler();
-    grilleUI->getPartie()->demarrer();
+  //  grilleUI->getPartie()->demarrer();
 }
 
 void CaseUI::marquer(){
@@ -22,22 +22,10 @@ void CaseUI::desactiver() {
 
 CaseUI::CaseUI(QGridLayout *grille,Case* case_, size_t taille, QWidget *parent) :QPushButton("",parent){
     _case=case_;
-
-
-   /* this->setGeometry(QRect(
-        QPoint(taille * getCase()->getX()+9, taille * getCase()->getY()+40),
-        QSize(taille, taille)
-    ));*/
     this->setStyleSheet("background-color:#B1CBCB;");
-
-
-    this->setMinimumSize(QSize(taille, taille));
-    this->setMaximumSize(QSize(taille, taille));
-
-     grille->addWidget(this, _case->getX(), _case->getY(), 1, 1);
-
-
-
+    this->setMinimumSize(QSize(int(taille), int(taille)));
+    this->setMaximumSize(QSize(int(taille), int(taille)));
+    grille->addWidget(this, int(_case->getX()), int(_case->getY()), 1, 1);
 }
 
 Case* CaseUI::getCase(){
@@ -75,7 +63,6 @@ void CaseUI::auClickGauche(){
 }
 
 void CaseUI::mousePressEvent(QMouseEvent *event){
-
     if (event->button() == Qt::LeftButton) {
         auClickGauche();
     }
@@ -84,7 +71,6 @@ void CaseUI::mousePressEvent(QMouseEvent *event){
     }
     CaseUI::getGrilleUI()->rafraichir();
 }
-
 
 void CaseUI::rafraichir() {
 

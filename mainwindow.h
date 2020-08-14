@@ -5,8 +5,11 @@
 #include "caseui.h"
 #include <vector>
 #include "grilleui.h"
+#include "presentation.h"
 #include <QTimer>
-
+#include <QLCDNumber>
+#include <QSplitter>
+#include <QRadioButton>
 
 namespace Ui {
 class MainWindow;
@@ -19,7 +22,6 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     void initialiser(size_t, size_t, size_t);
 
-
 signals :
 public slots :
     void chrono();
@@ -30,7 +32,9 @@ public slots :
 
 private:
     GrilleUI *grilleUI;
-
+    Presentation * presentation;
 };
+
+
 
 #endif // MAINWINDOW_H
