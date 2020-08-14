@@ -22,7 +22,7 @@ void CaseUI::desactiver() {
 
 CaseUI::CaseUI(QGridLayout *grille,Case* case_, size_t taille, QWidget *parent) :QPushButton("",parent){
     _case=case_;
-    this->setStyleSheet("background-color:#B1CBCB;");
+    this->setBackGround("#B1CBCB");
     this->setMinimumSize(QSize(int(taille), int(taille)));
     this->setMaximumSize(QSize(int(taille), int(taille)));
     grille->addWidget(this, int(_case->getX()), int(_case->getY()), 1, 1);
@@ -40,6 +40,7 @@ void CaseUI::setGrilleUI(GrilleUI * _grilleUI){
     grilleUI = _grilleUI;
 }
 CaseUI::~CaseUI() {
+    qDebug() << "caseUI::delete";
     delete this ;
 }
 
@@ -62,6 +63,11 @@ void CaseUI::auClickGauche(){
     devoiler();
 }
 
+void CaseUI::setBackGround(QString couleur)
+{
+    this->setStyleSheet("border:1px solid #E0EBEF; background-color:" + couleur);
+}
+
 void CaseUI::mousePressEvent(QMouseEvent *event){
     if (event->button() == Qt::LeftButton) {
         auClickGauche();
@@ -77,28 +83,27 @@ void CaseUI::rafraichir() {
     int etat = _case->getEtat();
     switch (etat) {
         case EnumEtats::NonDevoilee :
-            this->setStyleSheet("background-color:#B1CBCB;");
+            this->setBackGround("#B1CBCB");
         break;
 
         case EnumEtats::Marquee :
             this->setIcon(QIcon(":/resources/img/flag.png"));
-            this->setStyleSheet("background-color:#FFAA00;");
+            this->setBackGround("#FFAA00");
         break;
 
         case EnumEtats::Desactivee :
-            // this->setDisabled(true);
             if (this->getCase()->estMinee()){
-                this->setStyleSheet("background-color:#FF0000");
+                //this->setBackGround("#FF0000");
                 this->setIcon(QIcon(":/resources/img/bombe_.png"));
-                 /* son=new QSound(":/resources/son/son_bombe.wav");
-                   son->play();
-                   son->stop();*/
             }
         break;
 
         case EnumEtats::Devoilee :
            this->setText(getNombreMines());
-           this->setStyleSheet("background-color:#FFFFFF;");
+           this->setBackGround("#FFFFFF");
+           if (this->getCase()->estMinee()){
+                this->setBackGround("#FF0000");
+           }
         break;
     case EnumEtats::MarqueeDesactivee :
         this->setIcon(QIcon(""));

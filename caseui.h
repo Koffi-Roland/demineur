@@ -25,6 +25,7 @@ public:
    QString getNombreMines();
    void auClickDroit();
    void auClickGauche();
+   void setBackGround(QString);
    void mousePressEvent(QMouseEvent *);
    void devoiler();
    void marquer();

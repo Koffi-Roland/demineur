@@ -20,15 +20,12 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 public:
     explicit MainWindow(QWidget *parent = nullptr);
-    void initialiser(size_t, size_t, size_t);
+    void initialiser();
 
 signals :
 public slots :
     void chrono();
-    void rejouer();
-    void jouerModeDebutant();
-    void jouerModeMoyen();
-    void jouerModeExpert();
+    void jouer();
 
 private:
     GrilleUI *grilleUI;

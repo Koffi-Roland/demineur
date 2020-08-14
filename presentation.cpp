@@ -6,9 +6,7 @@
 #include <QStyle>
 #include "grilleui.h"
 
-Presentation::Presentation(){
-
-}
+Presentation::Presentation(){}
 Presentation::Presentation(QWidget *centralWidget, QMainWindow* mainWindow){
         QWidget* cadre = new QWidget(centralWidget);
         QHBoxLayout *layoutDonnees;
@@ -30,9 +28,9 @@ Presentation::Presentation(QWidget *centralWidget, QMainWindow* mainWindow){
         nouvellePartie = new QPushButton ("Jouer", centralWidget);
         nouvellePartie->setGeometry(QRect(300, 60, 200, 40));
 
-        debutant->setStyleSheet("padding:10px; background-color:#FFFFFF");
-        moyen->setStyleSheet("padding:10px; background-color:#FFFFFF");
-        expert->setStyleSheet("padding:10px; background-color:#FFFFFF");
+        debutant->setStyleSheet("padding:10px; background-color:#56B3D5");
+        moyen->setStyleSheet("padding:10px; background-color:#56B3D5");
+        expert->setStyleSheet("padding:10px; background-color:#56B3D5");
 
         debutant->setMinimumWidth(200);
         moyen->setMinimumWidth(200);
@@ -44,7 +42,7 @@ Presentation::Presentation(QWidget *centralWidget, QMainWindow* mainWindow){
         line->setFrameShadow(QFrame::Sunken);
 
         cadre = new QWidget(centralWidget);
-        cadre->setStyleSheet("border-radius:3px; background-color:#FFFFFF");
+        cadre->setStyleSheet("border-radius:3px; background-color:#035673");
         cadre->setGeometry(QRect(40, 110, 720, 430));
 
         widgetGrille = new QWidget (cadre);
@@ -54,16 +52,12 @@ Presentation::Presentation(QWidget *centralWidget, QMainWindow* mainWindow){
         gridLayoutGrille = new QGridLayout(widgetGrille);
         gridLayoutGrille->setSpacing(0) ;
 
-        GrilleUI* grilleUI = new GrilleUI(widgetGrille, 16, 30, 99);
-        gridLayoutGrille->addLayout(grilleUI,1, 0, 1, 1);
-
-
         QWidget* widgetDonnees = new QWidget (cadre);
         widgetDonnees->setGeometry(QRect(5, 0, 710, 70));
         layoutDonnees = new QHBoxLayout(widgetDonnees);
 
         QWidget* widgetDonneesGauche = new QWidget (widgetDonnees);
-        widgetDonneesGauche->setStyleSheet("border-radius:3px; background-color:#FF0000");
+        widgetDonneesGauche->setStyleSheet("border-radius:3px; background-color:#56B3D5");
         QHBoxLayout* layoutDonneesGauche = new QHBoxLayout (widgetDonneesGauche);
 
         QLabel  *inconeMine  = new QLabel(widgetDonneesGauche);
@@ -82,7 +76,7 @@ Presentation::Presentation(QWidget *centralWidget, QMainWindow* mainWindow){
         layoutDonnees->addItem(horizontalSpacer);
 
         QWidget* widgetDonneesDroit = new QWidget (widgetDonnees);
-        widgetDonneesDroit->setStyleSheet("border-radius:3px; background-color:#FF0000");
+        widgetDonneesDroit->setStyleSheet("border-radius:3px; background-color:#56B3D5");
         QHBoxLayout* layoutDonneesDroit = new QHBoxLayout (widgetDonneesDroit);
 
         QLabel  *inconeTemps  = new QLabel(widgetDonneesDroit);
@@ -110,9 +104,7 @@ Presentation::Presentation(QWidget *centralWidget, QMainWindow* mainWindow){
        statusBar = new QStatusBar(mainWindow);
        statusBar->setObjectName(QString::fromUtf8("statusBar"));
        mainWindow->setStatusBar(statusBar);
-
        menuBar->addAction(menufichier->menuAction());
-
 }
 
 void Presentation::setTextes(QMainWindow* mainWindow) {
@@ -211,6 +203,31 @@ void Presentation::setTempsEcoule() {
 
 QTimer* Presentation::getTimer(){
     return  _timer;
+}
+
+void Presentation::initialiserGrille(size_t ligne, size_t colonne, size_t nombreMines)
+{
+    if( grilleUI == nullptr) {
+        delete grilleUI;
+    }
+    grilleUI = new GrilleUI(widgetGrille, ligne, colonne, nombreMines);
+    gridLayoutGrille->addLayout(grilleUI,1, 0, 1, 1);
+}
+
+void Presentation::jouer()
+{
+
+    if(debutant->isChecked()){
+         initialiserGrille(9, 9, 10);
+    }
+
+    if(moyen->isChecked()){
+         initialiserGrille(16, 16, 40);
+    }
+
+    if(expert->isChecked()){
+         initialiserGrille(16, 30, 99);
+    }
 }
 
 Partie* Presentation::getPartie() {

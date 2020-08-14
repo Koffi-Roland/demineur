@@ -4,6 +4,12 @@
 #include <QDebug>
 
 GrilleUI::GrilleUI(){}
+GrilleUI::~ GrilleUI(){
+    qDebug() << "grilleUI::delete";
+    for (CaseUI *_caseui :  getCasesUI()) {
+        delete  _caseui;
+    }
+}
 
 GrilleUI::GrilleUI(QWidget* parent, size_t ligne, size_t colonne, size_t nombreMines)
 {

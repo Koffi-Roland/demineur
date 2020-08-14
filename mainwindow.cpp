@@ -7,10 +7,15 @@
 
 
 void MainWindow::chrono(){
-   // grilleUI->setTempsEcoule();
+    // grilleUI->setTempsEcoule();
 }
 
-void MainWindow::initialiser(size_t ligne,size_t colonne,size_t nombreMines){
+void MainWindow::jouer()
+{
+    presentation->jouer();
+}
+
+void MainWindow::initialiser() {
 
     QWidget *centralwidget = new QWidget(this);
     QFont font;
@@ -23,48 +28,14 @@ void MainWindow::initialiser(size_t ligne,size_t colonne,size_t nombreMines){
     presentation = new Presentation (centralwidget, this);
     gridLayoutGlobal->addLayout(presentation,1, 0, 1, 1);
 
-    // grilleUI = new GrilleUI(presentation->getWidgetGrrille(), ligne, colonne, nombreMines);
-    // gridLayoutGlobal->addLayout(grilleUI,1, 0, 1, 1);
-
     this->setCentralWidget(centralwidget);
 
-   // connect(grilleUI->getDebutant(), SIGNAL(clicked()),
-              // this, SIGNAL(jouerModeDebutant()));
+   connect(presentation->getNouvellePartie(), SIGNAL(clicked()),
+              this, SLOT(jouer()));
 
-  /*  QObject::connect(grilleUI->getDebutant(), SIGNAL(), this,SLOT(jouerModeDebutant()));
-    QObject::connect(grilleUI->getMoyen(), SIGNAL(), this,SLOT(jouerModeDebutant()));
-    QObject::connect(grilleUI->getExpert(), SIGNAL(), this,SLOT(jouerModeDebutant()));
-    QObject::connect(grilleUI->getNouvellePartie(), SIGNAL(), this,SLOT(jouerModeDebutant()));*/
-
-
-
-    /* Partie timer*/
    // QObject::connect(grilleUI->getTimer(), SIGNAL(timeout()), this,SLOT(chrono()));
    // grilleUI->getTimer()->start();
 }
-
-void MainWindow::jouerModeDebutant() {
-   grilleUI->initialiser(this,9, 9, 10);
-}
-
-
-
-void MainWindow::jouerModeMoyen(){
-      grilleUI->initialiser(this,16, 16, 40);
-
-}
-
-void MainWindow::jouerModeExpert(){
-      grilleUI->initialiser(this,16, 30, 99);
-
-}
-
-
-void MainWindow::rejouer(){
-    grilleUI->rejouer();
-}
-
-
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -73,8 +44,6 @@ MainWindow::MainWindow(QWidget *parent)
     this->resize(800, 600);
     this->setFixedSize(800,600);
     this->setWindowIcon(QIcon(":/resources/img/bombe_.png"));
-
-    initialiser(9, 9, 10);
-    // jouerModeDebutant();
+    initialiser();
     this->show();
 }

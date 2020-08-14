@@ -14,6 +14,7 @@ private:
 
 public:
     GrilleUI();
+    ~ GrilleUI();
     GrilleUI(QWidget*, size_t, size_t, size_t);
     CaseUI* getCaseUI(size_t,size_t);
     CaseUI* getCaseUI(size_t);
