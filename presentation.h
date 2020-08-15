@@ -23,6 +23,7 @@ private:
     QGridLayout* gridLayoutGrille;
     GrilleUI* grilleUI = nullptr;
     TypeJeux*  typeJeux;
+    QWidget *centralWidget;
 
 public:
     Presentation();
@@ -35,7 +36,7 @@ public:
     QToolButton* getNouvellePartie();
     void setNombreMinesMasquees();
     void setTempsEcoule();
-    QWidget* getWidgetGrrille();
+    QWidget* getWidgetGrille();
     QGridLayout* getGridLayoutGrille();
     QTimer* getTimer();
     void initialiserGrille(size_t, size_t, size_t);

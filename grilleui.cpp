@@ -15,10 +15,9 @@ GrilleUI::GrilleUI(QWidget* parent, size_t ligne, size_t colonne, size_t nombreM
 {
     grille = new Grille(ligne, colonne, nombreMines);
     initialiser(parent,ligne, colonne, nombreMines);
-    rejouer();
 }
 
-void GrilleUI::initialiser(QWidget* parent,size_t ligne, size_t colonne, size_t nombreMines){
+void GrilleUI::initialiser(QWidget* parent, size_t ligne, size_t colonne, size_t nombreMines){
     grille=new Grille(ligne, colonne, nombreMines);
     for (Case *_case :  grille->getCases()) {
         CaseUI *_caseui = new CaseUI(this, _case, tailleCase, parent );
@@ -64,11 +63,6 @@ void GrilleUI::rafraichir(){
         _caseui->rafraichir();
     }
    // labelNombreMinesMasquees->setText(getNombreMinees());
-}
-
-void GrilleUI::rejouer(){
-   // partie = new Partie(grille);
-    rafraichir();
 }
 
 Grille *GrilleUI::getGrille()

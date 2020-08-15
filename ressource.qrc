@@ -7,5 +7,7 @@
         <file>img/_time.png</file>
         <file>img/__time.png</file>
         <file>img/chrono.png</file>
+        <file>img/bombe_masquee.png</file>
+        <file>img/flag_bombe.png</file>
     </qresource>
 </RCC>

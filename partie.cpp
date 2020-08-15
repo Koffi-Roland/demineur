@@ -25,11 +25,11 @@ void Partie::terminer()
 }
 
 bool Partie::estTerminee(){
+    terminee = grille->estTerminee();
     return terminee ;
 }
 
 int Partie::getTempEcoule() {
-    terminee = grille->estTerminee();
     if(!estTerminee()){
         tempsFin = std::time(nullptr);
     }

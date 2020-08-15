@@ -9,7 +9,6 @@ CaseUI::CaseUI(){}
 
 void CaseUI::devoiler() {
     _case->devoiler();
-  //  grilleUI->getPartie()->demarrer();
 }
 
 void CaseUI::marquer(){
@@ -41,7 +40,6 @@ void CaseUI::setGrilleUI(GrilleUI * _grilleUI){
 }
 CaseUI::~CaseUI() {
     qDebug() << "caseUI::delete";
-    delete this ;
 }
 
 QString CaseUI::getNombreMines(){
@@ -56,7 +54,6 @@ QString CaseUI::getNombreMines(){
 
 void CaseUI::auClickDroit(){
     marquer();
-
 }
 
 void CaseUI::auClickGauche(){
@@ -84,16 +81,16 @@ void CaseUI::rafraichir() {
     switch (etat) {
         case EnumEtats::NonDevoilee :
             this->setBackGround("#B1CBCB");
+            this->setIcon(QIcon(""));
         break;
 
         case EnumEtats::Marquee :
             this->setIcon(QIcon(":/resources/img/flag.png"));
-            this->setBackGround("#FFAA00");
+           // this->setBackGround("#FFAA00");
         break;
 
         case EnumEtats::Desactivee :
             if (this->getCase()->estMinee()){
-                //this->setBackGround("#FF0000");
                 this->setIcon(QIcon(":/resources/img/bombe_.png"));
             }
         break;
@@ -101,14 +98,14 @@ void CaseUI::rafraichir() {
         case EnumEtats::Devoilee :
            this->setText(getNombreMines());
            this->setBackGround("#FFFFFF");
-           if (this->getCase()->estMinee()){
+           if (this->getCase()->estMinee()) {
                 this->setBackGround("#FF0000");
            }
         break;
     case EnumEtats::MarqueeDesactivee :
-        this->setIcon(QIcon(""));
-        if (this->getCase()->estMinee()){
-            this->setIcon(QIcon(":/resources/img/bombe_.png"));
+        //this->setIcon(QIcon(""));
+        if (this->getCase()->estMinee()) {
+            this->setIcon(QIcon(":/resources/img/bombe_masquee.png"));
         }
     break;
     }

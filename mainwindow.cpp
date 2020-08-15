@@ -1,13 +1,13 @@
 #include "mainwindow.h"
 #include <QDebug>
-
 #include <QCoreApplication>
 #include <QTimer>
 #include <string>
 
 
-void MainWindow::chrono(){
+void MainWindow::rafraichir(){
     presentation->setTempsEcoule();
+    presentation->setNombreMinesMasquees();
 }
 
 void MainWindow::jouer()
@@ -30,8 +30,8 @@ void MainWindow::initialiser() {
 
     this->setCentralWidget(centralwidget);
 
+    connect(presentation->getTimer(), SIGNAL(timeout()), this,SLOT(rafraichir()));
     connect(presentation->getNouvellePartie(), SIGNAL(clicked()),this, SLOT(jouer()));
-    connect(presentation->getTimer(), SIGNAL(timeout()), this,SLOT(chrono()));
 }
 
 

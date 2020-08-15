@@ -25,10 +25,8 @@ public:
     void rafraichir();
     void devoilerMinees();
     int getNombreMinees();
-    void rejouer();
     Grille* getGrille();
     void terminerAvecEchec();
-
 };
 
 #endif // GRILLEUI_H

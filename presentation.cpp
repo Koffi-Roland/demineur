@@ -4,6 +4,7 @@
 #include <QToolBar>
 #include <QStatusBar>
 #include <QStyle>
+#include <QDebug>
 
 Presentation::Presentation(){}
 Presentation::Presentation(QWidget *centralWidget, QMainWindow* mainWindow){
@@ -55,7 +56,7 @@ QGridLayout *Presentation::getGridLayoutGrille()
     return  gridLayoutGrille;
 }
 
-QWidget *Presentation::getWidgetGrrille()
+QWidget *Presentation::getWidgetGrille()
 {
     return widgetGrille;
 }
@@ -68,17 +69,21 @@ void Presentation::initialiserGrille(size_t ligne, size_t colonne, size_t nombre
 {
     if( grilleUI != nullptr) {
         removeItem(grilleUI);
+        gridLayoutGrille->removeItem(grilleUI);
+        delete grilleUI;
     }
     grilleUI = new GrilleUI(widgetGrille, ligne, colonne, nombreMines);
     gridLayoutGrille->addLayout(grilleUI,1, 0, 1, 1);
     partie = new Partie (grilleUI->getGrille());
-    _timer->start();
 }
 
 void Presentation::jouer()
 {
     typeJeux->initialiser();
     initialiserGrille(typeJeux->getLigne(), typeJeux->getColonne(), typeJeux->getNombreMines());
+    tempsEcoule->setNombre(0);
+    _timer->start();
+    partie->demarrer();
 }
 
 Partie* Presentation::getPartie() {

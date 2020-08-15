@@ -24,14 +24,13 @@ public:
 
 signals :
 public slots :
-    void chrono();
+    void rafraichir();
     void jouer();
 
 private:
     GrilleUI *grilleUI;
     Presentation * presentation;
+
 };
-
-
 
 #endif // MAINWINDOW_H

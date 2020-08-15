@@ -4,6 +4,7 @@
 #include <QVariant>
 #include <QSpacerItem>
 #include <QSplitter>
+#include <QDebug>
 
 
 Donnee::Donnee(){}
@@ -28,9 +29,8 @@ Donnee::Donnee(QHBoxLayout* layout, QWidget* parent, int _nombre, QString urlIco
     layout->addWidget(this);
 }
 
-void Donnee::setNombre(int _nombre){
+void Donnee::setNombre(int _nombre) {
      nombre->setProperty("intValue", QVariant(_nombre));
-     nombre->repaint();
 }
 
 void Donnee::setIcone(QString urlIcone){
