@@ -7,7 +7,7 @@
 
 
 void MainWindow::chrono(){
-    // grilleUI->setTempsEcoule();
+    presentation->setTempsEcoule();
 }
 
 void MainWindow::jouer()
@@ -30,11 +30,8 @@ void MainWindow::initialiser() {
 
     this->setCentralWidget(centralwidget);
 
-   connect(presentation->getNouvellePartie(), SIGNAL(clicked()),
-              this, SLOT(jouer()));
-
-   // QObject::connect(grilleUI->getTimer(), SIGNAL(timeout()), this,SLOT(chrono()));
-   // grilleUI->getTimer()->start();
+    connect(presentation->getNouvellePartie(), SIGNAL(clicked()),this, SLOT(jouer()));
+    connect(presentation->getTimer(), SIGNAL(timeout()), this,SLOT(chrono()));
 }
 
 

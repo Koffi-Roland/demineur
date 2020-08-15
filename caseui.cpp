@@ -65,7 +65,7 @@ void CaseUI::auClickGauche(){
 
 void CaseUI::setBackGround(QString couleur)
 {
-    this->setStyleSheet("border:1px solid #E0EBEF; background-color:" + couleur);
+    this->setStyleSheet("border-radius:none; border:1px solid #E0EBEF; background-color:" + couleur);
 }
 
 void CaseUI::mousePressEvent(QMouseEvent *event){

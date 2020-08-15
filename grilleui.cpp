@@ -35,8 +35,8 @@ size_t GrilleUI::getLongueur(){
     return tailleCase * grille->getLigne();
 }
 
-QString GrilleUI::getNombreMinees(){
-    return std::to_string(grille->getNombreMineesRestant()).c_str();
+int GrilleUI::getNombreMinees(){
+    return int (grille->getNombreMineesRestant());
 }
 
 CaseUI* GrilleUI::getCaseUI(size_t i, size_t j)
@@ -69,4 +69,9 @@ void GrilleUI::rafraichir(){
 void GrilleUI::rejouer(){
    // partie = new Partie(grille);
     rafraichir();
+}
+
+Grille *GrilleUI::getGrille()
+{
+    return  grille;
 }

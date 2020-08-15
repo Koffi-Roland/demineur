@@ -33,7 +33,8 @@ SOURCES += \
     initial.cpp \
     marqueedesactivee.cpp \
     partie.cpp \
-    presentation.cpp
+    presentation.cpp \
+    util.cpp
 
 HEADERS += \
     case.h \
@@ -52,7 +53,8 @@ HEADERS += \
     initial.h \
     marqueedesactivee.h \
     partie.h \
-    presentation.h
+    presentation.h \
+    util.h
 
 FORMS += \
     mainwindow.ui

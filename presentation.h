@@ -1,29 +1,28 @@
 #ifndef PRESENTATION_H
 #define PRESENTATION_H
 #include <QPushButton>
-#include <QLCDNumber>
 #include <QRadioButton>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QLabel>
 #include <QTimer>
 #include "partie.h"
 #include "grilleui.h"
+#include "util.h"
 #include <QMainWindow>
+#include "grilleui.h"
 
 class Presentation : public QGridLayout
 {
 private:
+    QWidget* cadre;
     Partie *partie;
-    QLCDNumber* nombreMinesMasquees;
-    QLCDNumber* tempsEcoule;
+    Donnee* nombreMinesMasquees;
+    Donnee* tempsEcoule;
     QTimer* _timer;
     QWidget* widgetGrille;
     QGridLayout* gridLayoutGrille;
     GrilleUI* grilleUI = nullptr;
-    QRadioButton *debutant;
-    QRadioButton *moyen;
-    QRadioButton *expert;
-    QPushButton *nouvellePartie;
+    TypeJeux*  typeJeux;
 
 public:
     Presentation();
@@ -33,7 +32,7 @@ public:
     QRadioButton* getDebutant();
     QRadioButton* getMoyen();
     QRadioButton* getExpert();
-    QPushButton* getNouvellePartie();
+    QToolButton* getNouvellePartie();
     void setNombreMinesMasquees();
     void setTempsEcoule();
     QWidget* getWidgetGrrille();
@@ -41,6 +40,7 @@ public:
     QTimer* getTimer();
     void initialiserGrille(size_t, size_t, size_t);
     void jouer();
+    void definirMenus(QMainWindow* );
 };
 
 #endif // PRESENTATION_H

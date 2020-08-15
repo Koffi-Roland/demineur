@@ -8,7 +8,7 @@ class GrilleUI :  private InterfaceGrille, public QGridLayout
 {
 
 private:
-    Grille *grille;
+    Grille* grille;
     std::vector<CaseUI*> casesUI;
     size_t tailleCase = 25;
 
@@ -24,8 +24,9 @@ public:
     void initialiser(QWidget*, size_t, size_t, size_t);
     void rafraichir();
     void devoilerMinees();
-    QString getNombreMinees();
+    int getNombreMinees();
     void rejouer();
+    Grille* getGrille();
     void terminerAvecEchec();
 
 };
