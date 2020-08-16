@@ -5,6 +5,7 @@
 #include <QStatusBar>
 #include <QStyle>
 #include <QDebug>
+#include "QMessageBox"
 
 Presentation::Presentation(){}
 Presentation::Presentation(QWidget *centralWidget, QMainWindow* mainWindow){
@@ -49,7 +50,13 @@ void Presentation::setNombreMinesMasquees()
 void Presentation::setTempsEcoule()
 {
    tempsEcoule->setNombre(partie->getTempEcoule());
+   if(partie->estTerminee()){
+       _timer->stop();
+       afficherMessage();
+   }
 }
+
+
 
 QGridLayout *Presentation::getGridLayoutGrille()
 {
@@ -109,5 +116,15 @@ void Presentation::definirMenus(QMainWindow* mainWindow)
     statusBar->setObjectName(QString::fromUtf8("statusBar"));
     mainWindow->setStatusBar(statusBar);
     menuBar->addAction(menufichier->menuAction());
+}
+
+void Presentation::afficherMessage()
+{
+    QMessageBox msgBox;
+    msgBox.setText("Oops! Vous avez perdu");
+    if(partie->estGagnee()) {
+        msgBox.setText("Bravo! vous avez gagné");
+    }
+    msgBox.exec();
 }
 

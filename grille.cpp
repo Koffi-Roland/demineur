@@ -69,7 +69,7 @@ std::vector<Case*> Grille::getMinees() {
 
 bool Grille::estTerminee(){
     for (Case *_case :  getCases()) {
-        if(_case->getEtat() == EnumEtats::NonDevoilee) {
+        if(_case->getEtat() == EnumEtats::NonDevoilee || _case->getEtat() == EnumEtats::Initial) {
             return false;
         }
     }
@@ -126,5 +126,4 @@ size_t Grille::getNombreMarquees() {
 
 void Grille::terminerAvecEchec() {
     partieEncours->terminer();
-    desactiverCases();
 }

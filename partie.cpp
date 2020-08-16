@@ -21,6 +21,7 @@ void Partie::demarrer() {
 
 void Partie::terminer()
 {
+    grille->desactiverCases();
     terminee = true;
 }
 
@@ -29,7 +30,16 @@ bool Partie::estTerminee(){
     return terminee ;
 }
 
+bool Partie::estGagnee()
+{
+    return  gagnee;
+}
+
 int Partie::getTempEcoule() {
+    if(grille->getNombreMineesRestant() == 0){
+        terminer();
+        gagnee = true;
+    }
     if( ! terminee ){
         tempsFin = std::time(nullptr);
     }

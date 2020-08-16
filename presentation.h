@@ -42,6 +42,7 @@ public:
     void initialiserGrille(size_t, size_t, size_t);
     void jouer();
     void definirMenus(QMainWindow* );
+    void afficherMessage();
 };
 
 #endif // PRESENTATION_H

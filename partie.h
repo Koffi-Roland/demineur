@@ -12,6 +12,7 @@ class Partie
 private:
     Grille *grille;
     bool terminee = false;
+    bool gagnee = false;
     std::time_t tempsDebut = 0;
     std::time_t tempsFin = 0;
 public:
@@ -22,6 +23,7 @@ public:
     int getTempEcoule();
     void terminer();
     bool estTerminee();
+    bool estGagnee();
 };
 
 #endif // PARTIE_H
