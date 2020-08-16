@@ -105,7 +105,7 @@ void TypeJeux::initialiser()
     if(expert->isChecked()){
         setParametre(16, 30, 99);
     }
-    setParametre(4, 4, 2);
+   // setParametre(4, 4, 2);
 }
 
 QToolButton* TypeJeux::getNouvellePartie()
