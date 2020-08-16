@@ -8,6 +8,7 @@
 #include <chrono>
 #include <ctime>
 
+class Partie;
 class Grille : private InterfaceGrille
 {
 
@@ -15,6 +16,7 @@ private:
     size_t ligne;
     size_t colonne;
     size_t nombreMines;
+    Partie* partieEncours;
     std::vector<Case*> cases;
     int saturation = 3; // Nombres maximale de mines autour d'une case
 public:
@@ -36,6 +38,8 @@ public:
     void reinitialiser();
     void initialiser(Etat *);
     int getTempEcoule();
+    void setPartieEncours(Partie*);
+    Partie* getPartieEncours();
     void terminerAvecEchec();
 };
 

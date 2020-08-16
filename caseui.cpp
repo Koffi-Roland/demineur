@@ -62,7 +62,21 @@ void CaseUI::auClickGauche(){
 
 void CaseUI::setBackGround(QString couleur)
 {
-    this->setStyleSheet("border-radius:none; border:1px solid #E0EBEF; background-color:" + couleur);
+    QString c=this->getStyle(this->getNombreMines().toInt());
+    this->setStyleSheet("border-radius:none; border:1px solid #035673;font-size:18px; background-color:" + couleur+";color:"+c);
+}
+
+QString CaseUI::getStyle(int nombre_mine){
+    switch (nombre_mine) {
+    case 1:
+        return "#0085D0";
+    case 2:
+        return "#04843A";
+    case 3:
+        return "#CC0000";
+    default:
+        return "#000000";
+    }
 }
 
 void CaseUI::mousePressEvent(QMouseEvent *event){

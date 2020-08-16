@@ -2,6 +2,7 @@
 #include "initial.h"
 #include "nondevoilee.h"
 #include "enumetats.h"
+#include "partie.h"
 
 Grille::Grille(){}
 Grille::Grille(size_t _ligne, size_t _colonne, size_t _nombreMines)
@@ -52,6 +53,7 @@ void Grille::setMines(Case * _caseInitial) {
             i++;
        }
     }
+    partieEncours->demarrer();
     initialiser();
 }
 
@@ -92,6 +94,16 @@ void Grille::initialiser(Etat* etat) {
     }
 }
 
+void Grille::setPartieEncours(Partie *_partieEncours)
+{
+    partieEncours = _partieEncours;
+}
+
+Partie *Grille::getPartieEncours()
+{
+    return partieEncours;
+}
+
 void Grille::reinitialiser() {
     for (Case *_case :  getCases()) {
            _case->passerAlEtat(new Initial());
@@ -113,5 +125,6 @@ size_t Grille::getNombreMarquees() {
 }
 
 void Grille::terminerAvecEchec() {
+    partieEncours->terminer();
     desactiverCases();
 }

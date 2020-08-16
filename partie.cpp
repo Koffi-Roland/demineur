@@ -6,6 +6,7 @@ Partie::Partie(){}
 
 Partie::Partie(Grille* _grille) {
     grille = _grille;
+    grille->setPartieEncours(this);
     grille->reinitialiser();
 }
 
@@ -14,9 +15,8 @@ Grille * Partie::getGrille() {
 }
 
 void Partie::demarrer() {
-    if (tempsDebut == 0){
-        tempsDebut = std::time(nullptr);
-    }
+    this->tempsDebut = std::time(nullptr);
+    this->tempsFin = std::time(nullptr);
 }
 
 void Partie::terminer()
@@ -30,8 +30,8 @@ bool Partie::estTerminee(){
 }
 
 int Partie::getTempEcoule() {
-    if(!estTerminee()){
+    if( ! terminee ){
         tempsFin = std::time(nullptr);
     }
-    return (tempsDebut == 0) ? 0 : int(tempsFin - tempsDebut);
+    return int(tempsFin - tempsDebut);
 }

@@ -21,7 +21,7 @@ Donnee::Donnee(QHBoxLayout* layout, QWidget* parent, int _nombre, QString urlIco
     icone->setPixmap(QPixmap(urlIcone));
     layoutDonneesGauche->addWidget(icone);
 
-    nombre = new QLCDNumber(4);
+    nombre = new QLCDNumber(5);
     nombre->setStyleSheet("background-color:#000000");
     nombre->setProperty("intValue", QVariant(_nombre));
     nombre->setMinimumSize(QSize(30, 30));

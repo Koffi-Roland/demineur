@@ -83,7 +83,6 @@ void Presentation::jouer()
     initialiserGrille(typeJeux->getLigne(), typeJeux->getColonne(), typeJeux->getNombreMines());
     tempsEcoule->setNombre(0);
     _timer->start();
-    partie->demarrer();
 }
 
 Partie* Presentation::getPartie() {
