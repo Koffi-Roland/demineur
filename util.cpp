@@ -47,21 +47,26 @@ TypeJeux::TypeJeux(QWidget* centralWidget)
     zoneTypesJeux->setOrientation(Qt::Horizontal);
     zoneTypesJeux->setStyleSheet("border-radius:3px;");
 
+    demo = new QRadioButton("Démo", zoneTypesJeux);
+    demo->setStyleSheet("padding:10px; background-color:#B1CBCB");
+    demo->setMinimumWidth(150);
+
     debutant = new QRadioButton("Débutant", zoneTypesJeux);
     debutant->setChecked(true);
+    debutant->setStyleSheet("padding:10px; background-color:#B1CBCB");
+    debutant->setMinimumWidth(150);
+
     moyen = new QRadioButton("Intermédiaire", zoneTypesJeux);
+    moyen->setStyleSheet("padding:10px; background-color:#B1CBCB");
+    moyen->setMinimumWidth(150);
+
     expert = new QRadioButton("Expert", zoneTypesJeux);
+    expert->setStyleSheet("padding:10px; background-color:#B1CBCB"); 
+    expert->setMinimumWidth(150);
+
     nouvellePartie = new QToolButton (centralWidget);
     nouvellePartie->setText("Jouer");
     nouvellePartie->setGeometry(QRect(300, 60, 200, 40));
-
-    debutant->setStyleSheet("padding:10px; background-color:#B1CBCB");
-    moyen->setStyleSheet("padding:10px; background-color:#B1CBCB");
-    expert->setStyleSheet("padding:10px; background-color:#B1CBCB");
-
-    debutant->setMinimumWidth(200);
-    moyen->setMinimumWidth(200);
-    expert->setMinimumWidth(200);
 
     line = new QFrame(centralWidget);
     line->setGeometry(QRect(50, 50, 700, 10));
@@ -94,6 +99,10 @@ void TypeJeux::setParametre(size_t _ligne, size_t _colonne, size_t _nombreMines)
 
 void TypeJeux::initialiser()
 {
+    if(demo->isChecked()){
+        setParametre(5, 5, 3);
+    }
+
     if(debutant->isChecked()){
         setParametre(9, 9, 10);
     }

@@ -31,6 +31,7 @@ public:
 class TypeJeux : public QWidget
 {
 private:
+    QRadioButton *demo;
     QRadioButton *debutant;
     QRadioButton *moyen;
     QRadioButton *expert;

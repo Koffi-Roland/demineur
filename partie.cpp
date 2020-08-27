@@ -36,11 +36,11 @@ bool Partie::estGagnee()
 }
 
 int Partie::getTempEcoule() {
-    if(grille->getNombreMineesRestant() == 0){
+    if(grille->getNombreMineesNonMarques() == 0 && grille->estTerminee()) {
         terminer();
         gagnee = true;
     }
-    if( ! terminee ){
+    if( ! terminee ) {
         tempsFin = std::time(nullptr);
     }
     return int(tempsFin - tempsDebut);

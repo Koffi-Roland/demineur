@@ -31,6 +31,7 @@ public:
     void setMines(Case *);
     std::vector<Case*> getMinees();
     size_t getNombreMineesRestant();
+    size_t getNombreMineesNonMarques();
     size_t getNombreMarquees();
     bool estTerminee();
     void desactiverCases();

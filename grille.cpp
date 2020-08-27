@@ -48,7 +48,7 @@ void Grille::setMines(Case * _caseInitial) {
     srand(time(nullptr));
     while (i < nombreMines) {
        Case *_case = getCase(rand() % (colonne*ligne));
-       if(! _case->estVoisine(_caseInitial) && ! _case->estSaturee(saturation)) {
+       if(! _case->estVoisine(_caseInitial) && ! _case->estSaturee(saturation) && ! _case->estMinee()) {
             _case->setMinee();
             i++;
        }
@@ -111,7 +111,18 @@ void Grille::reinitialiser() {
 }
 
 size_t Grille::getNombreMineesRestant() {
-  return nombreMines - getNombreMarquees();
+    return nombreMines - getNombreMarquees();
+}
+
+size_t Grille::getNombreMineesNonMarques()
+{
+    size_t n = 0;
+    for (Case *_case :  getCases()) {
+        if(_case->getEtat() == EnumEtats::Marquee && _case->estMinee()) {
+            n++;
+        }
+    }
+    return nombreMines - n;
 }
 
 size_t Grille::getNombreMarquees() {
